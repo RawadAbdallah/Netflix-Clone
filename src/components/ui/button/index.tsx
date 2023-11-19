@@ -1,12 +1,11 @@
 import './index.css'
 
 type ButtonProps = {
-  buttonText: string
-  buttonType: string
-  buttonSize: string
+  buttonType: 'primary' | 'secondary'
+  children: React.ReactNode
 }
-const Button = ({ buttonText, buttonType, buttonSize }: ButtonProps) => {
-  return <button className={`${buttonType} ${buttonSize}`}>{buttonText}</button>
+const Button = ({ buttonType = 'primary', children }: ButtonProps) => {
+  return <button className={'button ' + buttonType}>{children}</button>
 }
 
 export default Button
