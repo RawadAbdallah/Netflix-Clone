@@ -6,17 +6,46 @@
 }
 
 :root {
-  --primary-black: 0, 0, 0;
-  --primary-red: 229, 9, 20;
-  --primary-red-hover: 193, 17, 25;
+  --primary-black: rgb(0, 0, 0);
+  --primary-red: rgb(229, 9, 20);
+  --primary-red-hover: rgb(193, 17, 25);
+  --primary-grey: rgb(35, 35, 35);
+  --main-x-padding: 11%;
 }
 
 html,
 body {
   width: 100%;
+  font-family: 'NetflixSans', Arial, Helvetica, sans-serif;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+@font-face {
+  font-family: 'NetflixSans';
+  src: url('../assets/fonts/NetflixSans-Regular.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'NetflixSans';
+  src: url('../assets/fonts/NetflixSans-Bold.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@media (max-width: 1280px) {
+  :root {
+    --main-x-padding: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --main-x-padding: 20px;
+  }
 }

@@ -1,6 +1,6 @@
 import './index.css'
 
-const index = () => {
+function index() {
   return (
     <>
       <div className="getting-started-container">
@@ -20,7 +20,7 @@ const index = () => {
           <div className="getting-started-content-container">
             <h1>Unlimited movies, TV shows, and more</h1>
             <p>Watch anywhere. Cancel anytime.</p>
-            <></>
+            <p>Ready to watch? Enter your email to create or restart your membership.</p>
           </div>
         </div>
       </div>
