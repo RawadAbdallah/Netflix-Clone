@@ -1,8 +1,14 @@
 import { MovieDetails, MovieProps, TypeGenres } from '@/types/movie'
 
 export default class fetchTMDB {
+  /**
+   * Base api url for all requests to themoviesdb.
+   */
   private static apiBaseUrl = 'https://api.themoviedb.org/3'
 
+  /**
+   * Movie genres available in themoviesdb api
+   */
   static globalGenres: string[] = [
     'Action',
     'Adventure',
@@ -24,6 +30,10 @@ export default class fetchTMDB {
     'War',
     'Western'
   ]
+
+  /**
+   * Genre id relative to the genre in themoviesdb api
+   */
   private static globalGrenreskey = {
     Action: 28,
     Adventure: 12,
@@ -46,6 +56,11 @@ export default class fetchTMDB {
     Western: 37
   }
 
+  /**
+   * Fetch get method with headers and authorization key passed to it as an env variable.
+   * Note: make sure to add VITE_THEMOVIEDB_ACCESS_TOKEN as an environment variable
+   * in production and development.
+   */
   private static fetchOptions = {
     method: 'GET',
     headers: {
@@ -54,6 +69,17 @@ export default class fetchTMDB {
     }
   }
 
+  /**
+   * `getMovies()` returns a list of random movies.
+   *
+   * @returns list of movies
+   *
+   * ```tsx
+   * import { fetchTMDB } from "@/utilities"
+   *
+   * const { data, error } = await fetchTMDB.getMovies()
+   * ```
+   */
   static async getMovies() {
     let data: MovieProps[] | null
     let error
@@ -74,6 +100,19 @@ export default class fetchTMDB {
     return { data, error }
   }
 
+  /**
+   * `getMoviesByGenre()` returns a list of movies that are related to a specific genre.
+   * It takes genre as a parameter.
+   * @param genre
+   *
+   * @returns list of movies by genre
+   *
+   * ```tsx
+   * import { fetchTMDB } from "@/utilities"
+   *
+   * const { data, error } = await fetchTMDB.getMoviesByGenre("Action")
+   * ```
+   */
   static async getMoviesByGenre(genre: TypeGenres) {
     let data: MovieProps[] | null
     let error
@@ -100,6 +139,19 @@ export default class fetchTMDB {
     return { data, error }
   }
 
+  /**
+   * `getMovieDetails()` returns an object of all the movie details and takes the movie id
+   * as a parameter.
+   * @param movieID
+   *
+   * @returns object with movie details
+   *
+   * ```tsx
+   * import { fetchTMDB } from "@/utilities"
+   *
+   * const { data, error } = await fetchTMDB.getMovieDetails(00000)
+   * ```
+   */
   static async getMovieDetails(movieID: number) {
     let data: MovieDetails | null
     let error
@@ -126,6 +178,20 @@ export default class fetchTMDB {
     return { data, error }
   }
 
+  /**
+   * `getSimilarMovies()` returns a list of movies that are genre related to a
+   * specific movie.
+   * It takes the movie id as a parameter.
+   * @param movieID
+   *
+   * @returns list of movies related to a specific genre.
+   *
+   * ```tsx
+   * import { fetchTMDB } from "@/utilities"
+   *
+   * const { data, error } = await fetchTMDB.getSimilarMovies(00000)
+   * ```
+   */
   static async getSimilarMovies(movieID: number) {
     let data: MovieProps[] | null
     let error
@@ -152,6 +218,17 @@ export default class fetchTMDB {
     return { data, error }
   }
 
+  /**
+   * `getUpcomingMovies()` returns a list of movies that will be released soon.
+   *
+   * @returns list of upcoming movies.
+   *
+   * ```tsx
+   * import { fetchTMDB } from "@/utilities"
+   *
+   * const { data, error } = await fetchTMDB.getUpcomingMovies()
+   * ```
+   */
   static async getUpcomingMovies() {
     let data: MovieProps[] | null
     let error
