@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-black: 0, 0, 0;
+  --primary-red: 229, 9, 20;
+  --primary-red-hover: 193, 17, 25;
+}
+
+html,
+body {
+  width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
