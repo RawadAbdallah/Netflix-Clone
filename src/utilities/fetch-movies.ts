@@ -17,28 +17,9 @@ type typeMovie = {
   vote_count: number
 }
 
-// export default async function fetchMovies() {
-
-//   const url =
-//     'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
-
-//   const options = {
-//     method: 'GET',
-//     headers: {
-//       accept: 'application/json',
-//       Authorization: `Bearer ${import.meta.env.VITE_THEMOVIEDB_ACCESS_TOKEN}`
-//     }
-//   }
-
-//   await fetch(url, options)
-//     .then((res) => res.json())
-//     .then((json) => console.log(json.results))
-//     .catch((err) => console.error('error:' + err))
-// }
-
-const imgBaseUrl = 'http://image.tmdb.org/t/p/'
-
 export default class fetchTMDB {
+  static apiBaseUrl = 'https://api.themoviedb.org/3'
+
   static globalGenres: string[] = [
     'Action',
     'Adventure',
@@ -82,23 +63,22 @@ export default class fetchTMDB {
     Western: 37
   }
 
+  private static fetchOptions = {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${import.meta.env.VITE_THEMOVIEDB_ACCESS_TOKEN}`
+    }
+  }
+
   static async getMovies() {
     let data
     let error
 
-    const url =
-      'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
-
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_THEMOVIEDB_ACCESS_TOKEN}`
-      }
-    }
+    const url = `${this.apiBaseUrl}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`
 
     try {
-      const response = await fetch(url, options)
+      const response = await fetch(url, this.fetchOptions)
       const json = await response.json()
 
       data = json.results
@@ -121,18 +101,10 @@ export default class fetchTMDB {
       return { data, error }
     }
 
-    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${this.globalGrenreskey[genre]}`
-
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization: `Bearer ${import.meta.env.VITE_THEMOVIEDB_ACCESS_TOKEN}`
-      }
-    }
+    const url = `${this.apiBaseUrl}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${this.globalGrenreskey[genre]}`
 
     try {
-      const response = await fetch(url, options)
+      const response = await fetch(url, this.fetchOptions)
       const json = await response.json()
 
       data = json.results
