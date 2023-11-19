@@ -101,7 +101,7 @@ export default class fetchTMDB {
   }
 
   static async getMovieDetails(movieID: number) {
-    let data
+    let data: MovieDetails | null
     let error
 
     if (!movieID) {
