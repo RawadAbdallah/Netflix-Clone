@@ -126,7 +126,7 @@ export default class fetchTMDB {
     return { data, error }
   }
 
-  static async getMovieRecommendation(movieID: number) {
+  static async getMovieSimilar(movieID: number) {
     let data: MovieProps[] | null
     let error
 
@@ -136,7 +136,7 @@ export default class fetchTMDB {
       return { data, error }
     }
 
-    const url = `${this.apiBaseUrl}/movie/${movieID}/recommendations?language=en-US&page=1`
+    const url = `${this.apiBaseUrl}/movie/${movieID}/similar?language=en-US&page=1`
 
     try {
       const response = await fetch(url, this.fetchOptions)
