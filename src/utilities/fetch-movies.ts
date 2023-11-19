@@ -151,4 +151,24 @@ export default class fetchTMDB {
 
     return { data, error }
   }
+
+  static async getUpcomingMovies() {
+    let data: MovieProps[] | null
+    let error
+
+    const url = `${this.apiBaseUrl}/movie/upcoming?language=en-US&page=1`
+
+    try {
+      const response = await fetch(url, this.fetchOptions)
+      const json = await response.json()
+
+      data = json.results
+      error = null
+    } catch (err) {
+      data = null
+      error = err
+    }
+
+    return { data, error }
+  }
 }

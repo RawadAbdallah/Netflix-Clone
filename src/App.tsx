@@ -12,7 +12,7 @@ function App() {
 
   // useEffect(() => {
   //   const getData = async () => {
-  //     const { data, error } = await fetchTMDB.getMovieRecommendation(976573)
+  //     const { data, error } = await fetchTMDB.getUpcomingMovies()
   //     console.log(data)
   //     console.log(error)
   //   }
