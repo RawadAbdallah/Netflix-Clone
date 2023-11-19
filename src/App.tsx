@@ -10,16 +10,14 @@ import { fetchTMDB } from './utilities'
 function App() {
   // const [movies, setMovies] = useState([])
 
-  useEffect(() => {
-    const getData = async () => {
-      const { data, error } = await fetchTMDB.getMovies()
-      console.log(data)
-      console.log(error)
-      // setMovies(data)
-    }
-
-    // getData()
-  }, [])
+  // useEffect(() => {
+  //   const getData = async () => {
+  //     const { data, error } = await fetchTMDB.getMoviesByGenre('Documentary')
+  //     console.log(data)
+  //     console.log(error)
+  //   }
+  //   getData()
+  // }, [])
 
   return (
     <>
