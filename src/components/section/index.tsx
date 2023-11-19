@@ -1,13 +1,13 @@
 import './index.css'
 
-interface myProps {
+type sectionProps = {
   title: string
   description: string
   imgSrc: string
   isReversed?: false
 }
 
-const index: React.FC<myProps> = ({ title, description, imgSrc, isReversed }) => {
+function index({ title, description, imgSrc, isReversed }: sectionProps) {
   const sectionClassName: string = 'section-container ' + (isReversed ? 'reverse' : '')
 
   return (
