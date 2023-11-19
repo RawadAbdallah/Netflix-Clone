@@ -1,4 +1,4 @@
-import { MovieProps, TypeGenres } from '@/types/movie'
+import { MovieDetails, MovieProps, TypeGenres } from '@/types/movie'
 
 export default class fetchTMDB {
   private static apiBaseUrl = 'https://api.themoviedb.org/3'
@@ -24,7 +24,7 @@ export default class fetchTMDB {
     'War',
     'Western'
   ]
-  static globalGrenreskey = {
+  private static globalGrenreskey = {
     Action: 28,
     Adventure: 12,
     Animation: 16,
@@ -94,6 +94,33 @@ export default class fetchTMDB {
       error = null
     } catch (err) {
       data = null
+      error = err
+    }
+
+    return { data, error }
+  }
+
+  static async getMovieDetails(movieID: number) {
+    let data
+    let error
+
+    if (!movieID) {
+      data = null
+      error = 'No movie id provided.'
+      return { data, error }
+    }
+
+    const url = `${this.apiBaseUrl}/movie/${movieID}?language=en-US`
+    // const url = `http://api.themoviedb.org/3/movie/976573?language=en-US`
+
+    try {
+      const response = await fetch(url, this.fetchOptions)
+      data = await response.json()
+
+      error = null
+    } catch (err) {
+      data = null
+      console.error(err)
       error = err
     }
 
