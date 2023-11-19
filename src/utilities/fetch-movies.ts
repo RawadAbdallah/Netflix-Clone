@@ -111,7 +111,6 @@ export default class fetchTMDB {
     }
 
     const url = `${this.apiBaseUrl}/movie/${movieID}?language=en-US`
-    // const url = `http://api.themoviedb.org/3/movie/976573?language=en-US`
 
     try {
       const response = await fetch(url, this.fetchOptions)
@@ -121,6 +120,32 @@ export default class fetchTMDB {
     } catch (err) {
       data = null
       console.error(err)
+      error = err
+    }
+
+    return { data, error }
+  }
+
+  static async getMovieRecommendation(movieID: number) {
+    let data: MovieProps[] | null
+    let error
+
+    if (!movieID) {
+      data = null
+      error = 'No movie id provided.'
+      return { data, error }
+    }
+
+    const url = `${this.apiBaseUrl}/movie/${movieID}/recommendations?language=en-US&page=1`
+
+    try {
+      const response = await fetch(url, this.fetchOptions)
+      const json = await response.json()
+
+      data = json.results
+      error = null
+    } catch (err) {
+      data = null
       error = err
     }
 
