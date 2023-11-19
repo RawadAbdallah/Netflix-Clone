@@ -1,0 +1,57 @@
+.primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0px;
+  border-radius: 4px;
+  background: #e20813;
+  color: #fff;
+}
+
+.secondary {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid #888;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: 400;
+  line-height: 13px;
+}
+
+.primary:hover {
+}
+
+.secondary:hover {
+}
+
+.small {
+  align-items: center;
+  letter-spacing: normal;
+  line-height: 1;
+  cursor: pointer;
+  width: auto;
+  font-size: 14px;
+  font-weight: 500;
+  min-height: 32px;
+  padding: 4px 16px;
+}
+.medium {
+  font-size: 13px;
+  line-height: 15px;
+  min-height: auto;
+  padding: 9px 20px;
+  width: auto;
+}
+.large {
+  letter-spacing: normal;
+  line-height: 1;
+  cursor: pointer;
+  width: auto;
+  font-size: 24px;
+  font-weight: 500;
+  min-height: 56px;
+  padding: 12px 24px;
+}

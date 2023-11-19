@@ -1,7 +1,12 @@
 import './index.css'
 
-function index() {
-  return <button>index</button>
+type ButtonProps = {
+  buttonText: string
+  buttonType: string
+  buttonSize: string
+}
+const Button = ({ buttonText, buttonType, buttonSize }: ButtonProps) => {
+  return <button className={`${buttonType} ${buttonSize}`}>{buttonText}</button>
 }
 
-export default index
+export default Button
