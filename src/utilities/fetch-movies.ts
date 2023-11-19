@@ -126,7 +126,7 @@ export default class fetchTMDB {
     return { data, error }
   }
 
-  static async getMovieSimilar(movieID: number) {
+  static async getSimilarMovies(movieID: number) {
     let data: MovieProps[] | null
     let error
 
