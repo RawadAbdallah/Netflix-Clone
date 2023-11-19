@@ -1,24 +1,7 @@
-import { typeGenres } from '@/types/movie'
-
-type typeMovie = {
-  adult: boolean
-  backdrop_path: string
-  genre_ids: number[]
-  id: number
-  original_language: string
-  original_title: string
-  overview: string
-  popularity: number
-  poster_path: string
-  release_date: string
-  title: string
-  video: boolean
-  vote_average: number
-  vote_count: number
-}
+import { MovieProps, TypeGenres } from '@/types/movie'
 
 export default class fetchTMDB {
-  static apiBaseUrl = 'https://api.themoviedb.org/3'
+  private static apiBaseUrl = 'https://api.themoviedb.org/3'
 
   static globalGenres: string[] = [
     'Action',
@@ -72,7 +55,7 @@ export default class fetchTMDB {
   }
 
   static async getMovies() {
-    let data
+    let data: MovieProps[] | null
     let error
 
     const url = `${this.apiBaseUrl}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`
@@ -91,8 +74,8 @@ export default class fetchTMDB {
     return { data, error }
   }
 
-  static async getMoviesByGenre(genre: typeGenres) {
-    let data
+  static async getMoviesByGenre(genre: TypeGenres) {
+    let data: MovieProps[] | null
     let error
 
     if (!this.globalGenres.includes(genre)) {
