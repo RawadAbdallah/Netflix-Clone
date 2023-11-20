@@ -11,6 +11,10 @@
   --primary-red-hover: rgb(193, 17, 25);
   --primary-grey: rgb(35, 35, 35);
   --main-x-padding: 11%;
+  --primary-grey: rgb(136, 136, 136);
+  --primary-grey-hover: rgba(150, 150, 150, 0.3);
+  --primary-red: rgb(229, 9, 20);
+  --primary-red-hover: rgb(193, 17, 25);
 }
 
 html,
@@ -48,4 +52,19 @@ a {
   :root {
     --main-x-padding: 20px;
   }
+}
+/* mobiles */
+@media (min-width: 1px) and (max-width: 480px) {
+}
+
+/* tablets */
+@media (min-width: 481px) and (max-width: 767px) {
+}
+
+/* desktops */
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/* large desktops */
+@media (min-width: 1025px) {
 }
