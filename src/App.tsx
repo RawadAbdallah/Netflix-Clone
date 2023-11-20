@@ -1,13 +1,7 @@
-import '@/styles/global.css'
-
-import Hero from '@/components/getting-started-hero'
+import './styles/global.css'
 
 function App() {
-  return (
-    <>
-      <Hero></Hero>
-    </>
-  )
+  return <></>
 }
 
 export default App
