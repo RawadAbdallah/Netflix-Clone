@@ -1,5 +1,10 @@
 import './index.css'
 
+type ButtonProps = {
+  variant?: 'primary' | 'secondary'
+  children: React.ReactNode
+  className?: string
+}
 /**
  * `Button()` returns a button component.
  *
@@ -9,15 +14,7 @@ import './index.css'
  * @param className ,are additional classes that can be assigned to the component
  *
  * @returns a customized button jsx tag
- *
- *
  */
-type ButtonProps = {
-  variant?: 'primary' | 'secondary'
-  children: React.ReactNode
-  className?: string
-}
-
 export default function Button({
   variant = 'primary',
   children,
