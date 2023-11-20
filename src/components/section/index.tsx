@@ -4,10 +4,10 @@ interface myProps {
   title: string
   description: string
   imgSrc: string
-  isReversed?: false
+  isReversed: boolean
 }
 
-const index: React.FC<myProps> = ({ title, description, imgSrc, isReversed }) => {
+const index: React.FC<myProps> = ({ title, description, imgSrc, isReversed = false }) => {
   const sectionClassName: string = 'section-container ' + (isReversed ? 'reverse' : '')
 
   return (
