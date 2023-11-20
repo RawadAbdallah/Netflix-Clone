@@ -1,7 +1,7 @@
 import '/src/components/MoreDetails/index.css'
 
 const MoreDetails = () => {
-  const details_array = [
+  const details_array: { details_title: string; details: string }[] = [
     {
       details_title: 'Watch offline',
       details: 'Download and watch everywhere you go.'
@@ -23,7 +23,7 @@ const MoreDetails = () => {
       details: 'Arabic, English, French'
     }
   ]
-  const cast_names_array = [
+  const cast_names_array: string[] = [
     'Al Pacino',
     'Steven Bauer',
     'Michelle Pfeiffer',
