@@ -1,7 +1,11 @@
 import './index.css'
 
-function index() {
-  return <button>index</button>
+type ButtonProps = {
+  buttonType: 'primary' | 'secondary'
+  children: React.ReactNode
+}
+const Button = ({ buttonType = 'primary', children }: ButtonProps) => {
+  return <button className={'button ' + buttonType}>{children}</button>
 }
 
-export default index
+export default Button
