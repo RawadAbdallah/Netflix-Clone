@@ -1,11 +1,14 @@
 import './styles/global.css'
 
-import Section from '@/components/section'
-
-import Button from '@/components/ui/button'
+import MoreDetails from './components/MoreDetails'
 
 function App() {
-  return <></>
+  return (
+    <>
+      {' '}
+      <MoreDetails />
+    </>
+  )
 }
 
 export default App
