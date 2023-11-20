@@ -1,5 +1,5 @@
 .movie-container {
-  width: 302px;
+  max-width: 302px;
   height: 198px;
   display: flex;
   flex-direction: column;
