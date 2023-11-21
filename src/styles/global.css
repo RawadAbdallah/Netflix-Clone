@@ -34,14 +34,14 @@ ul {
 
 @font-face {
   font-family: 'NetflixSans';
-  src: url('../assets/fonts/NetflixSans-Regular.otf') format('truetype');
+  src: url('/fonts/NetflixSans-Regular.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'NetflixSans';
-  src: url('../assets/fonts/NetflixSans-Bold.otf') format('truetype');
+  src: url('/fonts/NetflixSans-Bold.otf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
