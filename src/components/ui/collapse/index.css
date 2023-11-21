@@ -73,3 +73,13 @@
     width: 20px;
   }
 }
+
+@media (max-width: 600px) {
+  .collapse {
+    font-size: 1rem;
+  }
+
+  .collapse-icon div {
+    width: 15px;
+  }
+}
