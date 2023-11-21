@@ -5,9 +5,9 @@ export default function LanguageSelector() {
     <div className="language-menu">
       <div className="select-wrapper">
         <div className="select-arrow globe">
-          <select className="select">
-            <option>العربية</option>
-            <option selected>English</option>
+          <select defaultValue={'english'} className="select">
+            <option value={'arabic'}>العربية</option>
+            <option value={'english'}>English</option>
           </select>
         </div>
       </div>
