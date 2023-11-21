@@ -26,7 +26,6 @@ function index({ title, children }: props) {
 
   return (
     <div className={`collapse${isCollapse ? ' collapsed' : ''}`}>
-      {console.log(children)}
       <div className="collapse-header" onClick={handleClick}>
         <p className="collapse-title">{title}</p>
         <div className="collapse-icon">
