@@ -2,10 +2,6 @@ import './index.css'
 
 import Collapse from '@/components/ui/collapse'
 
-type props = {
-  children: React.ReactNode
-}
-
 function index() {
   return (
     <div className="collapse-wrapper">
