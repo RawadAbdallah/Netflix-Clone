@@ -69,6 +69,11 @@ export default class fetchTMDB {
     }
   }
 
+  /**
+   * `fetchRequest` returns the response of a request and handles errors
+   *
+   * @returns response of a fetch
+   */
   private static async fetchRequest(url: string) {
     let dataReturned
     let errorReturned: string | null
@@ -96,7 +101,7 @@ export default class fetchTMDB {
   }
 
   /**
-   * `getMovies()` returns a list of random movies.
+   * `getMovies` returns a list of random movies.
    *
    * @returns list of movies
    *
@@ -116,7 +121,7 @@ export default class fetchTMDB {
   }
 
   /**
-   * `getMoviesByGenre()` returns a list of movies that are related to a specific genre.
+   * `getMoviesByGenre` returns a list of movies that are related to a specific genre.
    * It takes genre as a parameter.
    * @param genre
    *
@@ -144,7 +149,7 @@ export default class fetchTMDB {
   }
 
   /**
-   * `getMovieDetails()` returns an object of all the movie details and takes the movie id
+   * `getMovieDetails` returns an object of all the movie details and takes the movie id
    * as a parameter.
    * @param movieID
    *
@@ -172,7 +177,7 @@ export default class fetchTMDB {
   }
 
   /**
-   * `getSimilarMovies()` returns a list of movies that are genre related to a
+   * `getSimilarMovies` returns a list of movies that are genre related to a
    * specific movie.
    * It takes the movie id as a parameter.
    * @param movieID
@@ -201,7 +206,7 @@ export default class fetchTMDB {
   }
 
   /**
-   * `getUpcomingMovies()` returns a list of movies that will be released soon.
+   * `getUpcomingMovies` returns a list of movies that will be released soon.
    *
    * @returns list of upcoming movies.
    *
