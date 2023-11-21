@@ -1,5 +1,11 @@
+import Header from '@/components/header'
+
 import './index.css'
 
 export default function Home() {
-  return <div>home</div>
+  return (
+    <div>
+      <Header></Header>
+    </div>
+  )
 }
