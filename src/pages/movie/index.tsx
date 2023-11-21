@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom'
 
-export default function discover() {
+import './index.css'
+
+export default function Movie() {
   const param = useParams()
   const movieId = param.movieId
 
