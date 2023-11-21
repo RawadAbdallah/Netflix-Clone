@@ -69,6 +69,32 @@ export default class fetchTMDB {
     }
   }
 
+  private static async fetchRequest(url: string) {
+    let dataReturned
+    let errorReturned: string | null
+
+    try {
+      const response = await fetch(url, this.fetchOptions)
+      const json = await response.json()
+
+      dataReturned = json.results
+
+      if (dataReturned === undefined) {
+        dataReturned = null
+        errorReturned = 'error occured during fetch'
+      } else {
+        errorReturned = null
+      }
+    } catch (err) {
+      dataReturned = null
+      errorReturned = 'error occured during fetch'
+
+      console.log(err)
+    }
+
+    return { data: dataReturned, error: errorReturned }
+  }
+
   /**
    * `getMovies()` returns a list of random movies.
    *
@@ -81,21 +107,10 @@ export default class fetchTMDB {
    * ```
    */
   static async getMovies() {
-    let data: MovieProps[] | null
-    let error
-
     const url = `${this.apiBaseUrl}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc`
 
-    try {
-      const response = await fetch(url, this.fetchOptions)
-      const json = await response.json()
-
-      data = json.results
-      error = null
-    } catch (err) {
-      data = null
-      error = err
-    }
+    const { data, error }: { data: MovieProps[] | null; error: string | null } =
+      await this.fetchRequest(url)
 
     return { data, error }
   }
@@ -114,27 +129,16 @@ export default class fetchTMDB {
    * ```
    */
   static async getMoviesByGenre(genre: TypeGenres) {
-    let data: MovieProps[] | null
-    let error
-
     if (!this.globalGenres.includes(genre)) {
-      data = null
-      error = 'genre name is not included in the list of available genres.'
+      const data = null
+      const error = 'genre name is not included in the list of available genres.'
       return { data, error }
     }
 
     const url = `${this.apiBaseUrl}/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${this.globalGrenreskey[genre]}`
 
-    try {
-      const response = await fetch(url, this.fetchOptions)
-      const json = await response.json()
-
-      data = json.results
-      error = null
-    } catch (err) {
-      data = null
-      error = err
-    }
+    const { data, error }: { data: MovieProps[] | null; error: string | null } =
+      await this.fetchRequest(url)
 
     return { data, error }
   }
@@ -153,27 +157,16 @@ export default class fetchTMDB {
    * ```
    */
   static async getMovieDetails(movieID: number) {
-    let data: MovieDetails | null
-    let error
-
     if (!movieID) {
-      data = null
-      error = 'No movie id provided.'
+      const data = null
+      const error = 'No movie id provided.'
       return { data, error }
     }
 
     const url = `${this.apiBaseUrl}/movie/${movieID}?language=en-US`
 
-    try {
-      const response = await fetch(url, this.fetchOptions)
-      data = await response.json()
-
-      error = null
-    } catch (err) {
-      data = null
-      console.error(err)
-      error = err
-    }
+    const { data, error }: { data: MovieDetails | null; error: string | null } =
+      await this.fetchRequest(url)
 
     return { data, error }
   }
@@ -193,27 +186,16 @@ export default class fetchTMDB {
    * ```
    */
   static async getSimilarMovies(movieID: number) {
-    let data: MovieProps[] | null
-    let error
-
     if (!movieID) {
-      data = null
-      error = 'No movie id provided.'
+      const data = null
+      const error = 'No movie id provided.'
       return { data, error }
     }
 
     const url = `${this.apiBaseUrl}/movie/${movieID}/similar?language=en-US&page=1`
 
-    try {
-      const response = await fetch(url, this.fetchOptions)
-      const json = await response.json()
-
-      data = json.results
-      error = null
-    } catch (err) {
-      data = null
-      error = err
-    }
+    const { data, error }: { data: MovieProps[] | null; error: string | null } =
+      await this.fetchRequest(url)
 
     return { data, error }
   }
@@ -230,21 +212,10 @@ export default class fetchTMDB {
    * ```
    */
   static async getUpcomingMovies() {
-    let data: MovieProps[] | null
-    let error
-
     const url = `${this.apiBaseUrl}/movie/upcoming?language=en-US&page=1`
 
-    try {
-      const response = await fetch(url, this.fetchOptions)
-      const json = await response.json()
-
-      data = json.results
-      error = null
-    } catch (err) {
-      data = null
-      error = err
-    }
+    const { data, error }: { data: MovieProps[] | null; error: string | null } =
+      await this.fetchRequest(url)
 
     return { data, error }
   }
