@@ -1,0 +1,7 @@
+/* large desktops */
+@media (min-width: 1025px) {
+  .max-w {
+    max-width: 1010px;
+    margin: auto;
+  }
+}
