@@ -1,0 +1,85 @@
+.collapse {
+  width: 100%;
+  color: white;
+  font-family: 'NetflixSans', Arial, Helvetica, sans-serif;
+  padding: 0 11%;
+  font-size: 1.5rem;
+}
+
+.collapse-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px;
+  background-color: rgb(45, 45, 45);
+  border-bottom: 1px solid black;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.collapse-header:hover {
+  background-color: rgb(60, 60, 60);
+}
+
+.collapse-icon {
+  transition: all 0.25s ease-in-out;
+}
+
+.collapse-icon div {
+  width: 30px;
+  height: 2px;
+  background-color: white;
+}
+
+.collapse-icon div:first-child {
+  transform: rotate(45deg);
+}
+
+.collapse-icon div:last-child {
+  transform: translateY(-2px) rotate(-45deg);
+}
+
+.collapse-body {
+  padding: 30px;
+  background-color: rgb(45, 45, 45);
+  transition:
+    all 0.25s ease-in-out,
+    font-size 0s;
+}
+
+/* on collapse */
+.collapsed .collapse-body {
+  position: relative;
+  height: 0px;
+  padding: 0 30px;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.collapsed .collapse-icon {
+  transform: rotate(135deg);
+}
+
+/* Medium Screens */
+@media (max-width: 960px) {
+  .collapse {
+    font-size: 1.2rem;
+  }
+
+  .collapse-icon div {
+    width: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .collapse {
+    font-size: 1rem;
+  }
+
+  .collapse-icon div {
+    width: 15px;
+  }
+}
