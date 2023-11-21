@@ -2,6 +2,8 @@ import React from 'react'
 
 import './index.css'
 
+import { Link } from 'react-router-dom'
+
 type HeaderProps = {
   className?: string
   children?: React.ReactNode
@@ -30,8 +32,10 @@ export default function Index({ className, children }: HeaderProps) {
   return (
     <header className={`header ${className}`}>
       <div>
-        <img src="/logo.png" alt="netflix text logo" className="header-img-logo-text" />
-        <img src="/logo-n.png" alt="netflix logo" className="header-img-logo-n" />
+        <Link to={'/'}>
+          <img src="/logo.png" alt="netflix text logo" className="header-img-logo-text" />
+          <img src="/logo-n.png" alt="netflix logo" className="header-img-logo-n" />
+        </Link>
       </div>
 
       <nav className="header-content">{children}</nav>
