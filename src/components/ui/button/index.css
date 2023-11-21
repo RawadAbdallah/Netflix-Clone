@@ -1,0 +1,39 @@
+.button {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: max-content;
+  padding: 10px 15px;
+  font-family: 'NetflixSans', Arial, Helvetica, sans-serif;
+  font-size: 0.9rem;
+  border-radius: 2px;
+  transition: all 0.12s ease-in-out;
+  cursor: pointer;
+  line-height: 15px;
+}
+
+.primary {
+  background-color: #e20813;
+}
+
+.secondary {
+  border: 1px solid var(--primary-grey);
+  background-color: transparent;
+}
+
+.primary:hover {
+  background-color: var(--primary-red-hover);
+}
+
+.secondary:hover {
+  background-color: var(--primary-grey-hover);
+}
+
+.button h1 {
+  padding: 20px;
+}
+
+/* large desktops */
+@media (min-width: 1025px) {
+}
