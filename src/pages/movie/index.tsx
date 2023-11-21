@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import './index.css'
 
@@ -14,8 +14,14 @@ export default function Movie() {
     <div>
       <Header className="bg-black">
         <p>UNLIMITED TV SHOWS & MOVIES</p>
-        <Button>JOIN NOW</Button>
-        <Button variant="secondary">SIGN IN</Button>
+
+        <Link to={'/discover'}>
+          <Button>JOIN NOW</Button>
+        </Link>
+
+        <Link to={'/discover'}>
+          <Button variant="secondary">SIGN IN</Button>
+        </Link>
       </Header>
       <br />
       movie id: {movieId}
