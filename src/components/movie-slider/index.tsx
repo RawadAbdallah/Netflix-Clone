@@ -1,54 +1,79 @@
-/**
- * `Movie()` returns a clickable component with the movie's image and title.
- *
- * It takes variant, children, className as parameters.
- * @param movieURL ,string url that links to the movie's description page
- * @param movieImageSource ,string of the image source for the movie
- * @param movieTitle ,string for the movie's title
- * @param className ,are additional classes that can be assigned to the component
- *
- * @returns a customized <a> jsx tag that contains the movie's image and title.
- */
-
-import React from 'react'
-
 import './index.css'
 
-interface SliderProps {
-  children: React.ReactNode
+import React, { useEffect, useState } from 'react'
+
+type SliderProps = {
+  children: React.ReactNode[]
+  className?: string
 }
+/**
+ * `Slider()` returns a slider for Movies Components.
+ *
+ * It takes children, className as parameters.
+ * @param children ,are the Movie components passed to the slider
+ * @param className ,are additional classes that can be assigned to the component
+ *
+ * @returns a responsive slider, built specifically for Movie component
+ */
 
-const Slider: React.FC<SliderProps> = ({ children }) => {
-  const [sliderIndex, setSliderIndex] = React.useState(0)
-  const itemCount = React.Children.count(children)
-  const itemsPerScreen = 4
-  const progressBarItemCount = Math.ceil(itemCount / itemsPerScreen)
+export default function Slider({ children, className }: SliderProps) {
+  const TOTAL_SLIDE_ITEMS = children.length
+  const [sliderIndex, setSliderIndex] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
-  const handleClick = (direction: 'left' | 'right') => {
-    let newIndex = sliderIndex
-    if (direction === 'left') {
-      newIndex = (sliderIndex - 1 + progressBarItemCount) % progressBarItemCount
-    } else if (direction === 'right') {
-      newIndex = (sliderIndex + 1) % progressBarItemCount
+  useEffect(() => {
+    const handleResize = () => setWindowWidth(window.innerWidth)
+    window.addEventListener('resize', handleResize)
+    return
+  }, [])
+
+  let slidesPerWindow, slideWidth
+  if (windowWidth < 600) {
+    slidesPerWindow = Math.floor(windowWidth / 174)
+    slideWidth = 174
+  } else {
+    slidesPerWindow = Math.floor(windowWidth / 308)
+    slideWidth = 310
+  }
+
+  const numberOfSlides = Math.ceil(TOTAL_SLIDE_ITEMS / slidesPerWindow)
+
+  function slideLeft() {
+    if (sliderIndex == 0) {
+      setSliderIndex(numberOfSlides - 1)
+      return
     }
-    console.log(progressBarItemCount)
-    console.log(newIndex)
-    setSliderIndex(newIndex)
+    setSliderIndex(sliderIndex - 1)
+  }
+
+  function slideRight() {
+    if (sliderIndex == numberOfSlides - 1) {
+      setSliderIndex(0)
+      return
+    }
+    setSliderIndex(sliderIndex + 1)
   }
 
   return (
-    <div className="container">
-      <button onClick={() => handleClick('left')} className="handle left-handle">
-        Previous
-      </button>
-      <div className="slider" style={{ '--slider-index': sliderIndex }}>
+    <div className={`slider ${className}`}>
+      <div className="handle previous" onClick={slideLeft}>
+        <div className="handle-icon">
+          <img src="src\assets\images\slider\left.png" />
+        </div>
+      </div>
+      <div
+        style={{
+          transform: `translate(calc(-${slideWidth}px*${slidesPerWindow} * ${sliderIndex}))`
+        }}
+        className="slides"
+      >
         {children}
       </div>
-      <button onClick={() => handleClick('right')} className="handle right-handle">
-        Next
-      </button>
+      <div className="handle next" onClick={slideRight}>
+        <div className="handle-icon">
+          <img src="src\assets\images\slider\right.png" />
+        </div>
+      </div>
     </div>
   )
 }
-
-export default Slider

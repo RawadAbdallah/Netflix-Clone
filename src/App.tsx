@@ -11,7 +11,7 @@ function App() {
     {
       movieURL: 'https://www.imdb.com/title/tt0376756/',
       movieImageSource: placeholderImageURL,
-      movieTitle: 'The Shawshank Redemption'
+      movieTitle: 'Shawshank Redemption'
     },
     {
       movieURL: 'https://www.imdb.com/title/tt0068646/',
@@ -31,7 +31,7 @@ function App() {
     {
       movieURL: 'https://www.imdb.com/title/tt0167262/',
       movieImageSource: placeholderImageURL,
-      movieTitle: 'The Lord of the Rings: The Return of the King'
+      movieTitle: 'The Lord of the Rings'
     },
     {
       movieURL: 'https://www.imdb.com/title/tt1201607/',
@@ -42,13 +42,43 @@ function App() {
       movieURL: 'https://www.imdb.com/title/tt0468569/',
       movieImageSource: placeholderImageURL,
       movieTitle: 'The Good '
+    },
+    {
+      movieURL: 'https://www.imdb.com/title/tt0068646/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Godfather'
+    },
+    {
+      movieURL: 'https://www.imdb.com/title/tt0111161/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Dark Knight'
+    },
+    {
+      movieURL: 'https://www.imdb.com/title/tt0081144/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'Pulp Fiction'
+    },
+    {
+      movieURL: 'https://www.imdb.com/title/tt0167262/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Lord of the Rings'
+    },
+    {
+      movieURL: 'https://www.imdb.com/title/tt1201607/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'last slideeeee'
     }
   ]
   return (
     <div className="App">
       <Slider>
-        {movieData.map((movie) => (
-          <Movie key={movie.movieTitle} {...movie} />
+        {movieData.map((movie, index) => (
+          <Movie
+            movieTitle={movie.movieTitle}
+            movieImageSource={movie.movieImageSource}
+            movieURL={movie.movieURL}
+            key={index}
+          />
         ))}
       </Slider>
     </div>
