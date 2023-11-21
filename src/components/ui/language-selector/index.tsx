@@ -1,6 +1,6 @@
 import './index..css'
 
-function index() {
+export default function LanguageSelector() {
   return (
     <div className="language-menu">
       <div className="select-wrapper">
@@ -14,5 +14,3 @@ function index() {
     </div>
   )
 }
-
-export default index
