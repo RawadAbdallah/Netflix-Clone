@@ -9,69 +9,69 @@ function App() {
 
   const movieData = [
     {
-      movieId: 'https://www.imdb.com/title/tt0376756/',
-      img: placeholderImageURL,
-      title: 'Shawshank Redemption'
+      movieURL: 'https://www.imdb.com/title/tt0376756/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'Shawshank Redemption'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0068646/',
-      img: placeholderImageURL,
-      title: 'The Godfatr'
+      movieURL: 'https://www.imdb.com/title/tt0068646/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Godfather'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0111161/',
-      img: placeholderImageURL,
-      title: 'The Dark Knight'
+      movieURL: 'https://www.imdb.com/title/tt0111161/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Dark Knight'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0081144/',
-      img: placeholderImageURL,
-      title: 'Pulp Fiction'
+      movieURL: 'https://www.imdb.com/title/tt0081144/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'Pulp Fiction'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0167262/',
-      img: placeholderImageURL,
-      title: 'The Lord of the Rings'
+      movieURL: 'https://www.imdb.com/title/tt0167262/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Lord of the Rings'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt1201607/',
-      img: placeholderImageURL,
-      title: '12 Angry Men'
+      movieURL: 'https://www.imdb.com/title/tt1201607/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: '12 Angry Men'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0468569/',
-      img: placeholderImageURL,
-      title: 'The Good '
+      movieURL: 'https://www.imdb.com/title/tt0468569/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Good '
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0068646/',
-      img: placeholderImageURL,
-      title: 'The Godfather'
+      movieURL: 'https://www.imdb.com/title/tt0068646/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Godfather'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0111161/',
-      img: placeholderImageURL,
-      title: 'The Dark '
+      movieURL: 'https://www.imdb.com/title/tt0111161/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Dark Knight'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0081144/',
-      img: placeholderImageURL,
-      title: 'Pulp Fict'
+      movieURL: 'https://www.imdb.com/title/tt0081144/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'Pulp Fiction'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt0167262/',
-      img: placeholderImageURL,
-      title: 'The Lord of the'
+      movieURL: 'https://www.imdb.com/title/tt0167262/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'The Lord of the Rings'
     },
     {
-      movieId: 'https://www.imdb.com/title/tt1201607/',
-      img: placeholderImageURL,
-      title: 'last slideeeee'
+      movieURL: 'https://www.imdb.com/title/tt1201607/',
+      movieImageSource: placeholderImageURL,
+      movieTitle: 'last slideeeee'
     }
   ]
   return (
     <div className="App">
-      <Slider title="Hello World" movieList={movieData} key={1} />
+      <Slider title="Hello World">{movieData}</Slider>
     </div>
   )
 }
