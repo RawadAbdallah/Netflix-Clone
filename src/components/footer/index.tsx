@@ -1,5 +1,7 @@
 import './index.css'
 
+import LanguageSelector from '../ui/language-selector'
+
 function index() {
   return (
     <footer>
@@ -88,7 +90,7 @@ function index() {
         </li>
       </ul>
 
-      {/* Language selector to Be Added */}
+      <LanguageSelector />
 
       <p>Netflix Lebanon</p>
     </footer>
