@@ -4,6 +4,7 @@ import './index.css'
 
 import ComingSoon from '@/components/ComingSoon'
 import Header from '@/components/header'
+import MoreMovies from '@/components/MoreMovies'
 
 import Button from '@/components/ui/button'
 
@@ -26,7 +27,11 @@ export default function Movie() {
       </Header>
       <br />
       movie id: {movieId}
+<<<<<<< HEAD
       <ComingSoon></ComingSoon>
+=======
+      <MoreMovies />
+>>>>>>> more-movies-section
     </div>
   )
 }
