@@ -3,7 +3,6 @@ import { Link, useParams } from 'react-router-dom'
 import './index.css'
 
 import Header from '@/components/header'
-import HeroSection from '@/components/MoreDetailsHeroSection'
 
 import Button from '@/components/ui/button'
 
@@ -26,7 +25,6 @@ export default function Movie() {
       </Header>
       <br />
       movie id: {movieId}
-      <HeroSection />
     </div>
   )
 }
