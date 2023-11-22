@@ -1,0 +1,45 @@
+.email-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  gap: 10px;
+}
+
+.email-container h2 {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.email-input-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 550px;
+  gap: 10px;
+}
+.email-input-wrapper input {
+  flex: 2;
+  padding: 20px;
+  color: white;
+  background-color: rgba(29, 29, 29, 0.8);
+  border: 1px solid rgb(110, 110, 110);
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 620px) {
+  .email-container h2 {
+    font-size: 1.1rem;
+  }
+
+  .email-input-wrapper {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .email-input-wrapper input {
+    width: 100%;
+  }
+}
