@@ -4,5 +4,4 @@
   justify-content: center;
   flex-direction: column;
   gap: 5px;
-  padding: 50px var(--main-x-padding);
 }
