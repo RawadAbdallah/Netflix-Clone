@@ -4,7 +4,11 @@ import './index.css'
 
 import ComingSoon from '@/components/ComingSoon'
 import Header from '@/components/header'
+import Hook from '@/components/Hook'
+import MoreDetails from '@/components/MoreDetails'
+import HeroSection from '@/components/MoreDetailsHeroSection'
 import MoreMovies from '@/components/MoreMovies'
+import TudumPromo from '@/components/TudumPromo'
 
 import Button from '@/components/ui/button'
 
@@ -25,13 +29,12 @@ export default function Movie() {
           <Button variant="secondary">SIGN IN</Button>
         </Link>
       </Header>
-      <br />
-      movie id: {movieId}
-<<<<<<< HEAD
+      <HeroSection></HeroSection>
+      <Hook></Hook>
+      <MoreDetails></MoreDetails>
+      <MoreMovies></MoreMovies>
       <ComingSoon></ComingSoon>
-=======
-      <MoreMovies />
->>>>>>> more-movies-section
+      <TudumPromo></TudumPromo>
     </div>
   )
 }
