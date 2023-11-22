@@ -12,7 +12,7 @@ import HeroSection from '@/components/MoreDetailsHeroSection'
 import MoreMovies from '@/components/MoreMovies'
 import TudumPromo from '@/components/TudumPromo'
 import type { MovieDetails } from '@/types/movie'
-import { fetchTMDB } from '@/utilities'
+import { fetchTMDB, SEO } from '@/utilities'
 
 import Button from '@/components/ui/button'
 
@@ -31,6 +31,11 @@ export default function Movie() {
   useEffect(() => {
     getData()
   }, [])
+
+  SEO({
+    title: movieData.details?.title as string,
+    description: movieData.details?.tagline as string
+  })
   return (
     <div>
       <Header className="bg-black">
