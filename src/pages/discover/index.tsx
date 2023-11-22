@@ -2,6 +2,7 @@ import Header from '@/components/header'
 
 import './index.css'
 
+import Footer from '@/components/footer'
 import Slider from '@/components/movie-slider'
 import { TypeGenres } from '@/types/movie'
 import { fetchTMDB } from '@/utilities'
@@ -64,6 +65,8 @@ export default function Discover() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   )
 }
