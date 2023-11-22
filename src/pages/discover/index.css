@@ -36,15 +36,15 @@
   width: 100%;
   background-color: #181818;
   margin-top: -60px;
+  position: relative;
+  padding: 1em;
 }
 
 .discover-main-watch-more {
   width: 100%;
-  max-width: 740px;
   margin: auto;
   font-size: 1.5em;
   padding: 1em;
-  position: relative;
   text-align: center;
   display: flex;
   flex-flow: column;
@@ -57,13 +57,16 @@
 .discover-main-watch-more h2 {
   font-size: 36px;
   font-weight: 500;
+  max-width: 740px;
 }
 
 .discover-main-watch-more p {
+  max-width: 740px;
   font-size: 24px;
 }
 
 .discover-main-watch-more button {
+  max-width: 740px;
   font-size: 20px;
   padding: 14px 40px;
 }
