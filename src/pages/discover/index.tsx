@@ -37,22 +37,31 @@ export default function Discover() {
 
         <section className="discover-movies-by-genre">
           {globalGenres.map((genre, index) => {
-            if (index < 14) {
-              return <Slider key={index} genre={genre as TypeGenres} title={genre} />
+            if (index < 16) {
+              return (
+                <Slider
+                  className={index < 14 ? '' : 'blur-layer'}
+                  key={index}
+                  genre={genre as TypeGenres}
+                  title={genre}
+                />
+              )
             }
           })}
         </section>
 
-        <section className="discover-main-watch-more">
-          <h2>There’s even more to watch.</h2>
+        <section className="discover-main-watch">
+          <div className="discover-main-watch-more">
+            <h2>There’s even more to watch.</h2>
 
-          <p>
-            Netflix has an extensive library of feature films, documentaries, TV shows,
-            anime, award-winning Netflix originals, and more. Watch as much as you want,
-            anytime you want.
-          </p>
+            <p>
+              Netflix has an extensive library of feature films, documentaries, TV shows,
+              anime, award-winning Netflix originals, and more. Watch as much as you want,
+              anytime you want.
+            </p>
 
-          <Button>Join Now</Button>
+            <Button>Join Now</Button>
+          </div>
         </section>
       </main>
     </div>

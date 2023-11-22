@@ -80,9 +80,9 @@ export default function Slider({ className, title, genre }: SliderProps) {
   }
 
   return (
-    <section className="slider-container">
+    <section className={`slider-container ${className}`}>
       <h2>{title}</h2>
-      <div className={`slider ${className}`}>
+      <div className="slider">
         {displayIcon && (
           <div className="handle previous" onClick={slideLeft}>
             <div className="handle-icon">
