@@ -71,7 +71,17 @@ function App() {
   ]
   return (
     <div className="App">
-      <Slider>
+      <Slider title="Hello World">
+        {movieData.map((movie, index) => (
+          <Movie
+            movieTitle={movie.movieTitle}
+            movieImageSource={movie.movieImageSource}
+            movieURL={movie.movieURL}
+            key={index}
+          />
+        ))}
+      </Slider>{' '}
+      <Slider title="Hello World">
         {movieData.map((movie, index) => (
           <Movie
             movieTitle={movie.movieTitle}
