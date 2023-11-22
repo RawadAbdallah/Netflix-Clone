@@ -4,6 +4,12 @@
   background-color: #181818;
 }
 
+.discover-main-header {
+  top: 0;
+  position: sticky;
+  z-index: 999999999;
+}
+
 .discover-main-hero {
   width: 100%;
   max-width: 598px;
@@ -73,6 +79,16 @@
 
 .blur-layer {
   filter: blur(10px);
+}
+
+.discover-main-footer {
+  color: #737373;
+  border: none;
+  background-color: #181818;
+}
+
+.discover-main-footer a {
+  text-decoration: none !important;
 }
 
 @media (min-width: 1px) and (max-width: 480px) {

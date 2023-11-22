@@ -15,7 +15,7 @@ export default function Discover() {
 
   return (
     <div>
-      <Header className="bg-black">
+      <Header className="bg-black discover-main-header">
         <p>UNLIMITED TV SHOWS & MOVIES</p>
 
         <Link to={'/discover'}>
@@ -66,7 +66,7 @@ export default function Discover() {
         </section>
       </main>
 
-      <Footer />
+      <Footer className="discover-main-footer" />
     </div>
   )
 }

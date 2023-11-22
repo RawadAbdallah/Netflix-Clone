@@ -2,21 +2,16 @@ import './index.css'
 
 import LanguageSelector from '../ui/language-selector'
 
-type props = {
-  className: string
+type Props = {
+  className?: string
 }
-/**
- * <Footer/> component for the Netflix website.
- * @param className, is a string used for adding css style classes
- * @returns {JSX.Element} The JSX representation of the Netflix footer.
- */
 
-function Footer({ className = '' }: props) {
-  /**
-   * List of links for the Netflix Lebanon footer.
-   *
-   * @type {Array<{text: string, href: string}>}
-   */
+/**
+ * `Footer` component for the Netflix website.
+ * @param className, is a string used for adding css style classes
+ * @returns  Netflix footer.
+ */
+export default function Footer({ className }: Props) {
   const linksList = [
     { text: 'FAQ', href: 'https://help.netflix.com/support/412' },
     { text: 'Investor Relations', href: 'http://ir.netflix.com/' },
@@ -60,5 +55,3 @@ function Footer({ className = '' }: props) {
     </footer>
   )
 }
-
-export default Footer
