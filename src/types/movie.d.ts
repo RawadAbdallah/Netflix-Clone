@@ -20,6 +20,7 @@ export type TypeGenres =
   | 'Western'
 
 export type MovieProps = {
+  tagLine: ReactNode
   adult: boolean
   backdrop_path: string
   genre_ids: number[]

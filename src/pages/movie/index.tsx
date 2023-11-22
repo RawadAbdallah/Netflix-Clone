@@ -11,25 +11,39 @@ import MoreDetails from '@/components/MoreDetails'
 import HeroSection from '@/components/MoreDetailsHeroSection'
 import MoreMovies from '@/components/MoreMovies'
 import TudumPromo from '@/components/TudumPromo'
-import type { MovieDetails } from '@/types/movie'
+import type { MovieDetails, MovieProps } from '@/types/movie'
 import { fetchTMDB, SEO } from '@/utilities'
 
 import Button from '@/components/ui/button'
 
 export default function Movie() {
-  const [movieData, setMovieData] = useState<{ details: MovieDetails | null }>({
-    details: null
+  const [movieData, setMovieData] = useState<{
+    details: MovieDetails | null
+    similar: MovieProps[] | null
+    comingSoon: MovieProps[] | null
+  }>({
+    details: null,
+    similar: null,
+    comingSoon: null
   })
+
   const param = useParams()
-  const movieId = param.movieId
-  async function getData() {
-    const { data: detailsRes, error } = await fetchTMDB.getMovieDetails(336843)
+
+  const movieId = parseInt(param.movieId as string)
+
+  async function getData(id: number) {
+    const { data: detailsRes } = await fetchTMDB.getMovieDetails(id)
     setMovieData({ ...movieData, details: detailsRes })
-    console.log(detailsRes)
-    console.log(error)
+
+    const { data: similiarMoviesRes } = await fetchTMDB.getSimilarMovies(id)
+    setMovieData({ ...movieData, similar: similiarMoviesRes })
+
+    const { data: comingSoonMovies } = await fetchTMDB.getUpcomingMovies()
+    setMovieData({ ...movieData, comingSoon: comingSoonMovies })
   }
+
   useEffect(() => {
-    getData()
+    getData(movieId)
   }, [])
 
   SEO({
@@ -50,16 +64,15 @@ export default function Movie() {
         </Link>
       </Header>
       <HeroSection
-        backgroundImage={movieData.details?.poster_path}
+        backgroundImage={movieData.details?.backdrop_path}
         title={movieData.details?.title}
         description={movieData.details?.tagline}
       />
-      <Hook></Hook>
-      <MoreDetails></MoreDetails>
-      <MoreMovies></MoreMovies>
-      <ComingSoon></ComingSoon>
-      <TudumPromo></TudumPromo>
-      <Footer></Footer>
+      <Hook tagLine={movieData.details?.tagline} />
+      <MoreDetails />
+      <MoreMovies movieId={movieId} />
+      <ComingSoon comingSoon={movieData.comingSoon} />
+      <Footer className={''} />
     </div>
   )
 }
