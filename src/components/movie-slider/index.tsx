@@ -14,18 +14,17 @@ type SliderProps = {
 }
 
 /**
- * `Slider()` returns a slider for Movies Components.
+ * `Slider` returns a slider for Movies Components.
  *
- * It takes children, className as parameters.
- * @param children ,are the Movie components passed to the slider
- * @param className ,are additional classes that can be assigned to the component
- * @param title, slider title
+ * It takes genre and title as parameters.
+ * @param genre ,is the category of the movie to fetch.
+ * @param className ,are additional classes that can be assigned to the component.
+ * @param title, slider title.
  *
  * @returns a responsive slider, built specifically for Movie component
  */
 
 export default function Slider({ className = '', title, genre }: SliderProps) {
-  // const TOTAL_SLIDE_ITEMS = children.length
   const [movies, setMovies] = useState<MovieProps[] | null>(null)
   const [slider, setSlider] = useState({
     sliderIndex: 0,
@@ -109,6 +108,7 @@ export default function Slider({ className = '', title, genre }: SliderProps) {
   return (
     <section className={`slider-container ${className}`}>
       <h2>{title}</h2>
+
       <div className="slider-wrapper">
         {slider.displayIconLeft && (
           <div className="handle previous" onClick={slideLeft}>
@@ -117,6 +117,7 @@ export default function Slider({ className = '', title, genre }: SliderProps) {
             </div>
           </div>
         )}
+
         <div className="slider">
           <div
             style={{
@@ -134,6 +135,7 @@ export default function Slider({ className = '', title, genre }: SliderProps) {
             ))}
           </div>
         </div>
+
         <div className="handle next" onClick={slideRight}>
           <div className="handle-icon">
             <img src="public/right.png" alt="arrow right" />
