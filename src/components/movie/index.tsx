@@ -26,12 +26,12 @@ export default function Movie({
   className
 }: MovieProps) {
   return (
-    <a className={`movie-container ${className}`} href={`/movie/${movieId}`}>
+    <Link className={`movie-container ${className}`} to={`/movie/${movieId}`}>
       <img
         src={`${import.meta.env.VITE_IMAGE_BASE_URL}w500${movieImageSource}`}
         alt={movieTitle}
       />
       <span>{movieTitle}</span>
-    </a>
+    </Link>
   )
 }
