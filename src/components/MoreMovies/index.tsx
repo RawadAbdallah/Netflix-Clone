@@ -1,6 +1,24 @@
 import './index.css'
 
-const MoreMovies = () => {
+import { useEffect, useState } from 'react'
+import { fetchTMDB } from '@/utilities'
+
+type props = {
+  movieId: number
+}
+
+function MoreMovies({ movieId }: props) {
+  const [movies, setMovies] = useState([])
+
+  async function getData() {
+    const { data, error } = await fetchTMDB.getSimilarMovies(movieId)
+    return data
+  }
+
+  useEffect(() => {
+    const data = getData()
+  }, [])
+
   return (
     <div className="more-movies-container flex column">
       <div className="section-header">
