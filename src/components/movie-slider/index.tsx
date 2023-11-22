@@ -26,88 +26,117 @@ type SliderProps = {
 
 export default function Slider({ className, title, genre }: SliderProps) {
   // const TOTAL_SLIDE_ITEMS = children.length
-  const [sliderIndex, setSliderIndex] = useState(0)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
   const [movies, setMovies] = useState<MovieProps[] | null>(null)
+  const [slider, setSlider] = useState({
+    sliderIndex: 0,
+    windowWidth: window.innerWidth,
+    width: 0,
+    slidesPerWindow: 0,
+    slideWidth: 0,
+    displayIconLeft: false
+  })
 
-  let displayIcon = true
-  if (sliderIndex == 0) {
-    displayIcon = false
-  }
-
-  async function getData() {
-    const { data } = await fetchTMDB.getMoviesByGenre(genre)
-    setMovies(data)
-  }
+  const numberOfSlides = Math.ceil(movies?.length / slider.slidesPerWindow)
 
   useEffect(() => {
+    async function getData() {
+      const { data } = await fetchTMDB.getMoviesByGenre(genre)
+      setMovies(data)
+    }
     getData()
+  }, [genre])
+
+  useEffect(() => {
+    if (slider.sliderIndex == 0) {
+      setSlider((prev) => {
+        return { ...prev, displayIconLeft: false }
+      })
+    } else {
+      setSlider((prev) => {
+        return { ...prev, displayIconLeft: true }
+      })
+    }
 
     const handleResize = () =>
-      setWindowWidth(window.innerWidth - window.innerWidth * 0.03)
+      setSlider((prev) => {
+        return { ...prev, windowWidth: window.innerWidth - window.innerWidth * 0.03 }
+      })
+
     window.addEventListener('resize', handleResize)
+
+    if (slider.windowWidth < 600) {
+      setSlider((prev) => {
+        return { ...prev, slidesPerWindow: Math.floor(slider.windowWidth / 174) }
+      })
+      setSlider((prev) => {
+        return { ...prev, slideWidth: 174 }
+      })
+    } else {
+      setSlider((prev) => {
+        return { ...prev, slidesPerWindow: Math.floor(slider.windowWidth / 308) }
+      })
+      setSlider((prev) => {
+        return { ...prev, slideWidth: 310 }
+      })
+    }
     return
-  }, [])
-
-  let slidesPerWindow, slideWidth
-  if (windowWidth < 600) {
-    slidesPerWindow = Math.floor(windowWidth / 174)
-    slideWidth = 174
-  } else {
-    slidesPerWindow = Math.floor(windowWidth / 308)
-    slideWidth = 310
-  }
-
-  const numberOfSlides = Math.ceil(movies?.length / slidesPerWindow)
-  console.log(windowWidth)
-  console.log(slidesPerWindow)
-  console.log(slideWidth)
+  }, [slider.sliderIndex, slider.windowWidth])
 
   function slideLeft() {
-    if (sliderIndex == 0) {
-      setSliderIndex(numberOfSlides - 1)
+    if (slider.sliderIndex == 0) {
+      setSlider((prev) => {
+        return { ...prev, sliderIndex: numberOfSlides - 1 }
+      })
       return
     }
-    setSliderIndex(sliderIndex - 1)
+    setSlider((prev) => {
+      return { ...prev, sliderIndex: prev.sliderIndex - 1 }
+    })
   }
 
   function slideRight() {
-    if (sliderIndex == numberOfSlides - 1) {
-      setSliderIndex(0)
+    if (slider.sliderIndex == numberOfSlides - 1) {
+      setSlider((prev) => {
+        return { ...prev, sliderIndex: 0 }
+      })
       return
     }
-    setSliderIndex(sliderIndex + 1)
-  }
 
+    setSlider((prev) => {
+      return { ...prev, sliderIndex: prev.sliderIndex + 1 }
+    })
+  }
   return (
-    <section className={`slider-container ${className}`}>
+    <section className="slider-container">
       <h2>{title}</h2>
-      <div className="slider">
-        {displayIcon && (
+      <div className="slider-wrapper">
+        {slider.displayIconLeft && (
           <div className="handle previous" onClick={slideLeft}>
             <div className="handle-icon">
-              <img src="/left.png" />
+              <img src="public/left.png" alt="arrow left" />
             </div>
           </div>
         )}
-        <div
-          style={{
-            transform: `translate(calc(-${slideWidth}px*${slidesPerWindow} * ${sliderIndex}))`
-          }}
-          className="slides"
-        >
-          {movies?.map((movie, index) => (
-            <Movie
-              movieTitle={movie.title}
-              movieImageSource={movie.backdrop_path}
-              movieId={movie.id}
-              key={index}
-            />
-          ))}
+        <div className={`slider ${className}`}>
+          <div
+            style={{
+              transform: `translate(calc(-${slider.slideWidth}px*${slider.slidesPerWindow} * ${slider.sliderIndex}))`
+            }}
+            className="slides"
+          >
+            {movies?.map((movie, index) => (
+              <Movie
+                movieTitle={movie.title}
+                movieImageSource={movie.backdrop_path}
+                movieId={movie.id}
+                key={index}
+              />
+            ))}
+          </div>
         </div>
         <div className="handle next" onClick={slideRight}>
           <div className="handle-icon">
-            <img src="/right.png" />
+            <img src="public/right.png" alt="arrow right" />
           </div>
         </div>
       </div>
