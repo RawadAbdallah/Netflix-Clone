@@ -23,7 +23,7 @@ export default function Movie({
   movieId,
   movieImageSource,
   movieTitle,
-  className
+  className = ''
 }: MovieProps) {
   return (
     <Link className={`movie-container ${className}`} to={`/movie/${movieId}`}>
