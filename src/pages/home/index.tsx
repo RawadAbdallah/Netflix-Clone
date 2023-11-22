@@ -30,12 +30,14 @@ export default function Home() {
         imgSrc="/images/getting-started/tv.png"
         isReversed={false}
       />
+
       <Section
         title="Enjoy on your TV"
         description="Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more."
         imgSrc="/images/getting-started/mobile-0819.jpg"
         isReversed={true}
       />
+
       <Section
         title="Enjoy on your TV"
         description="Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more."
