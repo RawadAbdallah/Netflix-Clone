@@ -1,13 +1,14 @@
 import './index.css'
 
-const Hook = () => {
+type TagLineProps = {
+  tagLine: string | undefined
+}
+
+const Hook = ({ tagLine }: TagLineProps) => {
   return (
     <div className="hook-wrapper">
       <div className="hook-hr top"></div>
-      <div className="hook-text">
-        Al Pacino stars in this crime epic from director Brian De Palma and screenwriter
-        Oliver Stone.
-      </div>
+      <div className="hook-text">{tagLine}</div>
       <div className="hook-hr bottom"></div>
     </div>
   )
