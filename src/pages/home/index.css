@@ -1,7 +1,8 @@
 .home Header {
   position: absolute;
-  padding-top: 30px;
   top: 0;
+  padding-top: 30px;
+  background-color: var(--primary-black);
   z-index: 1;
 }
 
