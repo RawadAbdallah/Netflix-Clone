@@ -14,22 +14,18 @@
   justify-content: center;
   height: 100%;
 }
-.getting-started-hero h1 {
-  font-size: 48px;
-  font-weight: 900;
+.getting-started-content-title {
+  font-size: 2.8rem;
 }
 .getting-started-hero p {
-  font-size: 24px;
-  font-weight: 400;
-  margin-top: 24px;
+  font-size: 1.3rem;
+  margin-top: 10px;
 }
 .hero-background {
   position: absolute;
   left: 0;
   right: 0;
-
   height: 100%;
-  width: 100vw;
   overflow: hidden;
 }
 .hero-overlay {
@@ -82,12 +78,16 @@
 }
 
 @media screen and (max-width: 960px) {
-  .getting-started-hero h1 {
-    font-size: 32px;
-    font-weight: 700;
-  }
   .getting-started-content-container {
     max-width: calc(100% - 4rem);
+  }
+  .getting-started-content-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  .getting-started-content-container > p {
+    font-size: 1rem;
   }
 }
 

@@ -1,3 +1,14 @@
+.home Header {
+  position: absolute;
+  padding-top: 30px;
+  top: 0;
+  z-index: 1;
+}
+
+.home .header-img-logo-text {
+  width: 140px;
+}
+
 /* large desktops */
 @media (min-width: 1025px) {
   .max-w {
