@@ -45,7 +45,6 @@ export default function Slider({ className, title, movieList }: SliderProps) {
     function handleResize() {
       const newWindowWidth = window.innerWidth
 
-      console.log('init', newWindowWidth)
       setWindowWidth(newWindowWidth)
 
       if (windowWidth < 600) {
@@ -74,29 +73,6 @@ export default function Slider({ className, title, movieList }: SliderProps) {
       })
 
       setTransformBy(slider.width * slider.slidesPerWindow * slider.index)
-      console.log(slider)
-
-      // setSlider((prevSlider) => {
-      //   let newSlider
-      //   if (newWindowWidth < 600) {
-      //     newSlider = {
-      //       ...prevSlider,
-      //       width: 174
-      //     }
-      //   } else {
-      //     newSlider = {
-      //       ...prevSlider,
-      //       width: 310
-      //     }
-      //   }
-
-      //   newSlider.slidesPerWindow = Math.floor(newWindowWidth / newSlider.width)
-      //   newSlider.numberOfSlides = Math.ceil(movieList.length / newSlider.slidesPerWindow)
-
-      //   setTransformBy(newSlider.width * newSlider.slidesPerWindow * newSlider.index)
-
-      //   return newSlider
-      // })
     }
 
     handleResize()
