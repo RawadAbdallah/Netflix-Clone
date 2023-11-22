@@ -1,14 +1,23 @@
+import Movie from '../movie'
+
 import './index.css'
 
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+
+type MovieListType = {
+  title: string
+  img: string
+  movieId: string
+}
 
 type SliderProps = {
-  children: React.ReactNode[]
   className?: string
   title: string
+  movieList: MovieListType[]
 }
+
 /**
- * `Slider()` returns a slider for Movies Components.
+ * `Slider` returns a slider for Movies Components.
  *
  * It takes children, className as parameters.
  * @param children ,are the Movie components passed to the slider
@@ -17,57 +26,110 @@ type SliderProps = {
  *
  * @returns a responsive slider, built specifically for Movie component
  */
+export default function Slider({ className, title, movieList }: SliderProps) {
+  const [windowWidth, setWindowWidth] = useState(window?.innerWidth)
+  const [transformBy, setTransformBy] = useState(0)
+  const [slider, setSlider] = useState({
+    index: 1,
+    slidesPerWindow: 4,
+    width: 1,
+    numberOfSlides: 1
+  })
 
-export default function Slider({ children, className, title }: SliderProps) {
-  const TOTAL_SLIDE_ITEMS = children.length
-  const [sliderIndex, setSliderIndex] = useState(0)
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-  let displayIcon = true
-  if (sliderIndex == 0) {
-    displayIcon = false
-  }
+  const [displayIcon, setDisplayIcon] = useState({
+    left: slider.index === 0,
+    right: true
+  })
+
   useEffect(() => {
-    const handleResize = () =>
-      setWindowWidth(window.innerWidth - window.innerWidth * 0.03)
+    function handleResize() {
+      const newWindowWidth = window.innerWidth
+
+      console.log('init', newWindowWidth)
+      setWindowWidth(newWindowWidth)
+
+      if (windowWidth < 600) {
+        setSlider((prev) => {
+          return {
+            ...prev,
+            width: 174,
+            slidesPerWindow: Math.floor(windowWidth / 174)
+          }
+        })
+      } else {
+        setSlider((prev) => {
+          return {
+            ...prev,
+            width: 310,
+            slidesPerWindow: Math.floor(windowWidth / 308)
+          }
+        })
+      }
+
+      setSlider((prev) => {
+        return {
+          ...prev,
+          numberOfSlides: Math.ceil(movieList.length / slider.slidesPerWindow)
+        }
+      })
+
+      setTransformBy(slider.width * slider.slidesPerWindow * slider.index)
+      console.log(slider)
+
+      // setSlider((prevSlider) => {
+      //   let newSlider
+      //   if (newWindowWidth < 600) {
+      //     newSlider = {
+      //       ...prevSlider,
+      //       width: 174
+      //     }
+      //   } else {
+      //     newSlider = {
+      //       ...prevSlider,
+      //       width: 310
+      //     }
+      //   }
+
+      //   newSlider.slidesPerWindow = Math.floor(newWindowWidth / newSlider.width)
+      //   newSlider.numberOfSlides = Math.ceil(movieList.length / newSlider.slidesPerWindow)
+
+      //   setTransformBy(newSlider.width * newSlider.slidesPerWindow * newSlider.index)
+
+      //   return newSlider
+      // })
+    }
+
+    handleResize()
+
     window.addEventListener('resize', handleResize)
-    return
-  }, [])
 
-  let slidesPerWindow, slideWidth
-  if (windowWidth < 600) {
-    slidesPerWindow = Math.floor(windowWidth / 174)
-    slideWidth = 174
-  } else {
-    slidesPerWindow = Math.floor(windowWidth / 308)
-    slideWidth = 310
-  }
-
-  const numberOfSlides = Math.ceil(TOTAL_SLIDE_ITEMS / slidesPerWindow)
-  console.log(windowWidth)
-  console.log(slidesPerWindow)
-  console.log(slideWidth)
+    return window.removeEventListener('resize', handleResize)
+  }, [slider.index])
 
   function slideLeft() {
-    if (sliderIndex == 0) {
-      setSliderIndex(numberOfSlides - 1)
-      return
-    }
-    setSliderIndex(sliderIndex - 1)
+    setSlider({
+      ...slider,
+      index: slider.index === 0 ? 0 : slider.index - 1
+    })
+
+    setTransformBy(slider.width * slider.slidesPerWindow * slider.index)
   }
 
   function slideRight() {
-    if (sliderIndex == numberOfSlides - 1) {
-      setSliderIndex(0)
-      return
-    }
-    setSliderIndex(sliderIndex + 1)
+    setSlider({
+      ...slider,
+      index: slider.index === slider.numberOfSlides - 1 ? slider.index : slider.index + 1
+    })
+
+    setTransformBy(slider.width * slider.slidesPerWindow * slider.index)
   }
 
   return (
     <section className="slider-container">
       <h2>{title}</h2>
+
       <div className={`slider ${className}`}>
-        {displayIcon && (
+        {displayIcon.right && (
           <div className="handle previous" onClick={slideLeft}>
             <div className="handle-icon">
               <img src="src\assets\images\slider\left.png" />
@@ -77,12 +139,22 @@ export default function Slider({ children, className, title }: SliderProps) {
 
         <div
           style={{
-            transform: `translate(calc(-${slideWidth}px*${slidesPerWindow} * ${sliderIndex}))`
+            transform: `translate(-${transformBy}px)`
           }}
           className="slides"
         >
-          {children}
+          {movieList.map((movie) => {
+            return (
+              <Movie
+                key={`${movie.movieId}-${movie.title}`}
+                movieURL={movie.movieId}
+                movieImageSource={movie.img}
+                movieTitle={movie.title}
+              />
+            )
+          })}
         </div>
+
         <div className="handle next" onClick={slideRight}>
           <div className="handle-icon">
             <img src="src\assets\images\slider\right.png" />
