@@ -14,18 +14,17 @@ type SliderProps = {
 }
 
 /**
- * `Slider()` returns a slider for Movies Components.
+ * `Slider` returns a slider for Movies Components.
  *
- * It takes children, className as parameters.
- * @param children ,are the Movie components passed to the slider
+ * It takes 
  * @param className ,are additional classes that can be assigned to the component
+ * @param genre ,is the movire genre
  * @param title, slider title
  *
  * @returns a responsive slider, built specifically for Movie component
  */
 
 export default function Slider({ className, title, genre }: SliderProps) {
-  // const TOTAL_SLIDE_ITEMS = children.length
   const [movies, setMovies] = useState<MovieProps[] | null>([])
   const [slider, setSlider] = useState({
     sliderIndex: 0,
@@ -44,8 +43,6 @@ export default function Slider({ className, title, genre }: SliderProps) {
     async function getData() {
       const { data } = await fetchTMDB.getMoviesByGenre(genre)
       setMovies(data)
-
-      console.log(data)
     }
     getData()
   }, [])
