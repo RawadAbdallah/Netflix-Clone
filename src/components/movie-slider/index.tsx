@@ -107,7 +107,7 @@ export default function Slider({ className, title, genre }: SliderProps) {
     })
   }
   return (
-    <section className="slider-container">
+    <section className={`slider-container ${className}`}>
       <h2>{title}</h2>
       <div className="slider-wrapper">
         {slider.displayIconLeft && (
@@ -117,7 +117,7 @@ export default function Slider({ className, title, genre }: SliderProps) {
             </div>
           </div>
         )}
-        <div className={`slider ${className}`}>
+        <div className="slider">
           <div
             style={{
               transform: `translate(calc(-${slider.slideWidth}px*${slider.slidesPerWindow} * ${slider.sliderIndex}))`
