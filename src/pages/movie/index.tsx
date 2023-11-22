@@ -4,6 +4,7 @@ import './index.css'
 
 import { useEffect, useState } from 'react'
 import ComingSoon from '@/components/ComingSoon'
+import Footer from '@/components/footer'
 import Header from '@/components/header'
 import Hook from '@/components/Hook'
 import MoreDetails from '@/components/MoreDetails'
@@ -53,6 +54,7 @@ export default function Movie() {
       <MoreMovies></MoreMovies>
       <ComingSoon></ComingSoon>
       <TudumPromo></TudumPromo>
+      <Footer></Footer>
     </div>
   )
 }
