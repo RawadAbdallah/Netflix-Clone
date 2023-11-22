@@ -25,16 +25,18 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding: 0px 5vw;
-  height: 95vh;
+  height: 110vh;
   width: 100%;
+  margin-bottom: 10vh;
 }
 .movie-section {
+  padding-top: 78px;
   width: 50%;
   height: 100%;
   max-width: 800px;
   min-width: 500px;
   gap: 40px;
-  justify-content: center;
+  justify-content: start;
   background: linear-gradient(
     90deg,
     #181818 10%,
@@ -98,4 +100,35 @@
 }
 .movie-cast > span {
   color: #a3a3a3;
+}
+.join-now-container {
+  background-image: linear-gradient(90deg, #333 5%, #181818 95%);
+  box-shadow: 8px 5px 16px 0 rgba(0, 0, 0, 0.37);
+  margin-bottom: 32px;
+  margin-top: -30px;
+  position: relative;
+  width: 100%;
+  height: 10vh;
+  padding: 8px;
+}
+.netflix-logo {
+  height: 100%;
+  width: auto;
+  margin-left: 25px;
+}
+
+.value-prop-wrapper {
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding-left: 15px;
+}
+
+.value-prop-text {
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.join-now-btn {
+  margin: 5px 25px 5px 1em;
 }

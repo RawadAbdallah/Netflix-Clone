@@ -1,5 +1,7 @@
 import './index.css'
 
+import Button from '../ui/button'
+
 const HeroSection = () => {
   return (
     <div className="hero-section-container full-width">
@@ -29,6 +31,17 @@ const HeroSection = () => {
           <div className="movie-cast">
             <span>Starring: </span>Al Pacino, Steven Bauer, Michelle Pfeiffer
           </div>
+        </div>
+      </div>
+      <div className="join-now-container flex row">
+        <img
+          className="netflix-logo"
+          src="https://upload.wikimedia.org/wikipedia/commons/0/0c/Netflix_2015_N_logo.svg"
+          alt="netflix logo"
+        />
+        <div className="value-prop-wrapper flex row">
+          <div className="value-prop-text">Watch all you want.</div>
+          <Button className="join-now-btn">JOIN NOW</Button>
         </div>
       </div>
     </div>
