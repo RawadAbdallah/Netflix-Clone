@@ -31,6 +31,10 @@ footer p {
   font-size: 0.9rem;
 }
 
+footer .language-menu {
+  margin: 0;
+}
+
 @media (max-width: 950px) {
   .footer-links-list {
     grid-template-columns: repeat(2, 1fr);
