@@ -5,18 +5,14 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <Slider>
-        {movieData.map((movie, index) => (
-          <Movie
-            movieTitle={movie.movieTitle}
-            movieImageSource={movie.movieImageSource}
-            movieURL={movie.movieURL}
-            key={index}
-          />
-        ))}
-      </Slider>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" index element={<Home />} />
+        <Route path="/discover" element={<Discover />} />
+        <Route path="/movie/:movieId" element={<Movie />} />
+        <Route path="*" element={<>404 page not found</>} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
