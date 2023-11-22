@@ -81,6 +81,7 @@
 
 .blur-layer {
   filter: blur(10px);
+  pointer-events: none;
 }
 
 .discover-main-footer {
