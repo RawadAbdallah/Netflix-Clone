@@ -7,7 +7,7 @@
   align-items: center;
 }
 .movie-container img {
-  width: 100%;
+  width: 302px;
   height: 168px;
   object-fit: cover;
 }

@@ -26,7 +26,7 @@ export default function Movie({
   return (
     <a className={`movie-container ${className}`} href={movieURL}>
       <img src={movieImageSource} alt={movieTitle} />
-      <span>movieTitle</span>
+      <span>{movieTitle}</span>
     </a>
   )
 }
