@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom'
+
 import './index.css'
 
 type MovieProps = {
-  movieURL: string
+  movieId: number
   movieImageSource: string
   movieTitle: string
   className?: string
@@ -18,14 +20,17 @@ type MovieProps = {
  * @returns a customized <a> jsx tag that contains the movie's image and title.
  */
 export default function Movie({
-  movieURL,
+  movieId,
   movieImageSource,
   movieTitle,
   className
 }: MovieProps) {
   return (
-    <a className={`movie-container ${className}`} href={movieURL}>
-      <img src={movieImageSource} alt={movieTitle} />
+    <a className={`movie-container ${className}`} href={`/movie/${movieId}`}>
+      <img
+        src={`${import.meta.env.VITE_IMAGE_BASE_URL}w500${movieImageSource}`}
+        alt={movieTitle}
+      />
       <span>{movieTitle}</span>
     </a>
   )

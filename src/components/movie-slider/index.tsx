@@ -1,20 +1,18 @@
+import { MovieProps, TypeGenres } from '@/types/movie'
+
 import Movie from '../movie'
 
 import './index.css'
 
 import { useEffect, useState } from 'react'
+import { fetchTMDB } from '@/utilities'
 
 type SliderProps = {
-  children: MovieProps[]
   className?: string
   title: string
+  genre: TypeGenres
 }
-type MovieProps = {
-  movieURL: string
-  movieImageSource: string
-  movieTitle: string
-  className?: string
-}
+
 /**
  * `Slider()` returns a slider for Movies Components.
  *
@@ -26,15 +24,25 @@ type MovieProps = {
  * @returns a responsive slider, built specifically for Movie component
  */
 
-export default function Slider({ children, className, title }: SliderProps) {
-  const TOTAL_SLIDE_ITEMS = children.length
+export default function Slider({ className, title, genre }: SliderProps) {
+  // const TOTAL_SLIDE_ITEMS = children.length
   const [sliderIndex, setSliderIndex] = useState(0)
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+  const [movies, setMovies] = useState<MovieProps[] | null>(null)
+
   let displayIcon = true
   if (sliderIndex == 0) {
     displayIcon = false
   }
+
+  async function getData() {
+    const { data } = await fetchTMDB.getMoviesByGenre(genre)
+    setMovies(data)
+  }
+
   useEffect(() => {
+    getData()
+
     const handleResize = () =>
       setWindowWidth(window.innerWidth - window.innerWidth * 0.03)
     window.addEventListener('resize', handleResize)
@@ -50,7 +58,7 @@ export default function Slider({ children, className, title }: SliderProps) {
     slideWidth = 310
   }
 
-  const numberOfSlides = Math.ceil(TOTAL_SLIDE_ITEMS / slidesPerWindow)
+  const numberOfSlides = Math.ceil(movies?.length / slidesPerWindow)
   console.log(windowWidth)
   console.log(slidesPerWindow)
   console.log(slideWidth)
@@ -88,11 +96,11 @@ export default function Slider({ children, className, title }: SliderProps) {
           }}
           className="slides"
         >
-          {children.map((movie, index) => (
+          {movies?.map((movie, index) => (
             <Movie
-              movieTitle={movie.movieTitle}
-              movieImageSource={movie.movieImageSource}
-              movieURL={movie.movieURL}
+              movieTitle={movie.title}
+              movieImageSource={movie.backdrop_path}
+              movieId={movie.id}
               key={index}
             />
           ))}

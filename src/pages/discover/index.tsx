@@ -2,6 +2,8 @@ import Header from '@/components/header'
 
 import './index.css'
 
+import Slider from '@/components/movie-slider'
+import { TypeGenres } from '@/types/movie'
 import { fetchTMDB } from '@/utilities'
 import { Link } from 'react-router-dom'
 
@@ -36,7 +38,7 @@ export default function Discover() {
         <section className="discover-movies-by-genre">
           {globalGenres.map((genre, index) => {
             if (index < 14) {
-              return <span>{genre}</span>
+              return <Slider key={index} genre={genre as TypeGenres} title={genre} />
             }
           })}
         </section>
