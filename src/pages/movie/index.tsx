@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 
 import './index.css'
 
+import ComingSoon from '@/components/ComingSoon'
 import Header from '@/components/header'
 
 import Button from '@/components/ui/button'
@@ -25,6 +26,7 @@ export default function Movie() {
       </Header>
       <br />
       movie id: {movieId}
+      <ComingSoon></ComingSoon>
     </div>
   )
 }
