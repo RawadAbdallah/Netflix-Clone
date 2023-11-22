@@ -8,3 +8,8 @@
 .home .header-img-logo-text {
   width: 140px;
 }
+
+.custom-video video {
+  top: 10%;
+  width: 64%;
+}

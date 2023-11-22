@@ -1,10 +1,12 @@
 import './index.css'
 
 interface myProps {
+  clasName?: string
   title: string
   description: string
   imgSrc: string
-  isReversed: boolean
+  isReversed?: boolean
+  bgVideo?: string
 }
 
 /**
@@ -18,22 +20,30 @@ interface myProps {
  *
  * @returns a custom section tsx tag
  */
-
-const index: React.FC<myProps> = ({ title, description, imgSrc, isReversed = false }) => {
-  const sectionClassName: string = 'section-container ' + (isReversed ? 'reverse' : '')
-
+export default function Index({
+  clasName,
+  title,
+  description,
+  imgSrc,
+  isReversed = false,
+  bgVideo
+}: myProps) {
   return (
-    <section className={sectionClassName}>
+    <section className={`section-container ${isReversed ? 'reverse' : ''} ${clasName}`}>
       <div className="section-left">
         <h1>{title}</h1>
         <p>{description}</p>
       </div>
 
       <div className="section-right">
-        <img src={imgSrc} />
+        <div className="section-righ-container">
+          <img src={imgSrc} className="section-right-img" />
+
+          <video autoPlay playsInline loop muted className="section-right-video">
+            <source src={bgVideo} type="video/mp4" />
+          </video>
+        </div>
       </div>
     </section>
   )
 }
-
-export default index
