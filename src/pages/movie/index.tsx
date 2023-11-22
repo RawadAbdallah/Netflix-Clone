@@ -24,8 +24,8 @@ export default function Movie() {
           <Button variant="secondary">SIGN IN</Button>
         </Link>
       </Header>
-      {/* <br />
-      movie id: {movieId} */}
+      <br />
+      movie id: {movieId}
       <HeroSection />
     </div>
   )
