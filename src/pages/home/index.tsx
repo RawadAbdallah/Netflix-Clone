@@ -28,19 +28,22 @@ export default function Home() {
         title="Enjoy on your TV"
         description="Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more."
         imgSrc="/images/getting-started/tv.png"
-        isReversed={false}
+        bgVideo="/videos/tv.m4v"
       />
+
       <Section
         title="Enjoy on your TV"
         description="Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more."
         imgSrc="/images/getting-started/mobile-0819.jpg"
         isReversed={true}
       />
+
       <Section
         title="Enjoy on your TV"
         description="Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more."
         imgSrc="/images/getting-started/device-pile.png"
-        isReversed={false}
+        bgVideo="/videos/video-devices.m4v"
+        clasName="custom-video"
       />
 
       <Faq />
