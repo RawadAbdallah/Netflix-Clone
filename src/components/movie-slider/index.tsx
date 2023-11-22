@@ -87,8 +87,6 @@ export default function Slider({ className, title, movieList }: SliderProps) {
       ...slider,
       index: slider.index === 0 ? 0 : slider.index - 1
     })
-
-    setTransformBy(slider.width * slider.slidesPerWindow * slider.index)
   }
 
   function slideRight() {
@@ -96,8 +94,6 @@ export default function Slider({ className, title, movieList }: SliderProps) {
       ...slider,
       index: slider.index === slider.numberOfSlides - 1 ? slider.index : slider.index + 1
     })
-
-    setTransformBy(slider.width * slider.slidesPerWindow * slider.index)
   }
 
   return (
