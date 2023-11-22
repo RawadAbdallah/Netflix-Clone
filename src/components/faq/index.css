@@ -3,9 +3,10 @@
   align-items: center;
   flex-direction: column;
   gap: 15px;
-  padding: 20px var(--main-x-padding) 50px var(--main-x-padding);
+  padding: 55px var(--main-x-padding);
   color: white;
   background-color: var(--primary-black);
+  border-top: 7px solid var(--secondary-grey);
 }
 
 .faq-title {
