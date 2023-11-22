@@ -26,7 +26,7 @@ type SliderProps = {
 
 export default function Slider({ className, title, genre }: SliderProps) {
   // const TOTAL_SLIDE_ITEMS = children.length
-  const [movies, setMovies] = useState<MovieProps[] | null>(null)
+  const [movies, setMovies] = useState<MovieProps[] | null>([])
   const [slider, setSlider] = useState({
     sliderIndex: 0,
     windowWidth: window.innerWidth,
@@ -36,15 +36,19 @@ export default function Slider({ className, title, genre }: SliderProps) {
     displayIconLeft: false
   })
 
-  const numberOfSlides = Math.ceil(movies?.length / slider.slidesPerWindow)
+  const numberOfSlides = Math.ceil(
+    movies?.length === null ? 1 : movies?.length / slider.slidesPerWindow
+  )
 
   useEffect(() => {
     async function getData() {
       const { data } = await fetchTMDB.getMoviesByGenre(genre)
       setMovies(data)
+
+      console.log(data)
     }
     getData()
-  }, [genre])
+  }, [])
 
   useEffect(() => {
     if (slider.sliderIndex == 0) {
@@ -106,6 +110,7 @@ export default function Slider({ className, title, genre }: SliderProps) {
       return { ...prev, sliderIndex: prev.sliderIndex + 1 }
     })
   }
+
   return (
     <section className={`slider-container ${className}`}>
       <h2>{title}</h2>
@@ -113,7 +118,7 @@ export default function Slider({ className, title, genre }: SliderProps) {
         {slider.displayIconLeft && (
           <div className="handle previous" onClick={slideLeft}>
             <div className="handle-icon">
-              <img src="public/left.png" alt="arrow left" />
+              <img src="/left.png" alt="arrow left" />
             </div>
           </div>
         )}
@@ -124,19 +129,21 @@ export default function Slider({ className, title, genre }: SliderProps) {
             }}
             className="slides"
           >
-            {movies?.map((movie, index) => (
-              <Movie
-                movieTitle={movie.title}
-                movieImageSource={movie.backdrop_path}
-                movieId={movie.id}
-                key={index}
-              />
-            ))}
+            {movies?.map((movie, index) => {
+              return (
+                <Movie
+                  movieTitle={movie.title}
+                  movieImageSource={movie.backdrop_path}
+                  movieId={movie.id}
+                  key={index}
+                />
+              )
+            })}
           </div>
         </div>
         <div className="handle next" onClick={slideRight}>
           <div className="handle-icon">
-            <img src="public/right.png" alt="arrow right" />
+            <img src="/right.png" alt="arrow right" />
           </div>
         </div>
       </div>
