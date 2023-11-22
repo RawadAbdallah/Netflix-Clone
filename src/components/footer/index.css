@@ -6,7 +6,7 @@ footer {
   padding: 30px var(--main-x-padding);
   background-color: var(--primary-black);
   color: rgba(255, 255, 255, 0.7);
-  border-top: 8px solid var(--primary-grey);
+  border-top: 8px solid var(--secondary-grey);
   gap: 15px;
 }
 
