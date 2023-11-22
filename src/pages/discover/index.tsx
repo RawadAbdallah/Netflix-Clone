@@ -20,6 +20,16 @@ export default function Discover() {
           <Button variant="secondary">SIGN IN</Button>
         </Link>
       </Header>
+
+      <main className="discover-main">
+        <div className='discover-main-hero'>
+          <h1>Movies</h1>
+          <p>
+            Movies move us like nothing else can, whether they’re scary, funny, dramatic,
+            romantic or anywhere in-between. So many titles, so much to experience.
+          </p>
+        </div>
+      </main>
     </div>
   )
 }
