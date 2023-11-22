@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import './index.css'
 
 import Header from '@/components/header'
+import Hook from '@/components/Hook'
 
 import Button from '@/components/ui/button'
 
@@ -25,6 +26,7 @@ export default function Movie() {
       </Header>
       <br />
       movie id: {movieId}
+      <Hook></Hook>
     </div>
   )
 }
