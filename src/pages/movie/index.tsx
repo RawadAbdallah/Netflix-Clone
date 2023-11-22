@@ -39,7 +39,7 @@ export default function Movie() {
     setMovieData({ ...movieData, similar: similiarMoviesRes })
 
     const { data: comingSoonMovies } = await fetchTMDB.getUpcomingMovies()
-    setMovieData({ ...movieData, comingSoon: comingSoonMovies })
+    setMovieData({ ...movieData, comingSoon: comingSoonMovies.results })
   }
 
   useEffect(() => {

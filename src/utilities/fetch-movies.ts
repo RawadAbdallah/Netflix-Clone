@@ -228,9 +228,26 @@ export default class fetchTMDB {
   static async getUpcomingMovies() {
     const url = `${this.apiBaseUrl}/movie/upcoming?language=en-US&page=1`
 
-    const { data, error }: { data: MovieProps[] | null; error: string | null } =
-      await this.fetchRequest(url)
+    let dataReturned: MovieProps[] | null
+    let errorReturned: string | null
 
-    return { data, error }
+    try {
+      const response = await fetch(url, this.fetchOptions)
+      const json = await response.json()
+      dataReturned = json
+      if (dataReturned === undefined) {
+        dataReturned = null
+        errorReturned = 'error occured during fetch'
+      } else {
+        errorReturned = null
+      }
+    } catch (err) {
+      dataReturned = null
+      errorReturned = 'error occured during fetch'
+
+      console.log(err)
+    }
+
+    return { data: dataReturned, error: errorReturned }
   }
 }

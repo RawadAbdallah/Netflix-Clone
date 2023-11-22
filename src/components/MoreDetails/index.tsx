@@ -7,9 +7,12 @@ const MoreDetails = () => {
     <div className="more-details-section flex column">
       <h2 className="title primary-text margin-6px full-width">More Details</h2>
       <div className="details-container flex row wrap full-width">
-        {details_array.map((item) => {
+        {details_array.map((item, index) => {
           return (
-            <div className="more-details-cell flex column item-width margin-6px">
+            <div
+              className="more-details-cell flex column item-width margin-6px"
+              key="index"
+            >
               <div className="details-title font-16px secondary-text">
                 {item.details_title}
               </div>
