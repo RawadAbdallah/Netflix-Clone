@@ -2,9 +2,16 @@ import './index.css'
 
 import Button from '../ui/button'
 
-const HeroSection = () => {
+type HeroProps = { backgroundImage: string; title: string; description: string }
+
+const HeroSection = ({ backgroundImage, title, description }: HeroProps) => {
   return (
-    <div className="hero-section-container full-width">
+    <div
+      className="hero-section-container full-width"
+      style={{
+        backgroundImage: `url(${backgroundImage})`
+      }}
+    >
       <div className="movie-section flex column">
         <div className="movie-logo-container">
           <img
@@ -14,7 +21,7 @@ const HeroSection = () => {
           />
         </div>
         <div className="movie-details flex column">
-          <h1 className="movie-title">Scarface</h1>
+          <h1 className="movie-title">{title}</h1>
           <div className="movie-info flex row">
             <span className="movie-info-item">1983</span>
             <span className="movie-info-spacer">|</span>
@@ -24,10 +31,7 @@ const HeroSection = () => {
             <span className="movie-info-spacer">|</span>
             <span className="movie-info-item">Thrillers</span>
           </div>
-          <div className="movie-description">
-            In a ruthless rise to Miami drug lord, a Cuban-born gangster descends into
-            addiction, obsession and brutality, with grisly consequences.
-          </div>
+          <div className="movie-description">{description}</div>
           <div className="movie-cast">
             <span>Starring: </span>Al Pacino, Steven Bauer, Michelle Pfeiffer
           </div>

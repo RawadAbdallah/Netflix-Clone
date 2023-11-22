@@ -29,7 +29,7 @@ export default function Movie() {
           <Button variant="secondary">SIGN IN</Button>
         </Link>
       </Header>
-      <HeroSection></HeroSection>
+      <HeroSection backgroundImage={''} title={''} description={''} />
       <Hook></Hook>
       <MoreDetails></MoreDetails>
       <MoreMovies></MoreMovies>
