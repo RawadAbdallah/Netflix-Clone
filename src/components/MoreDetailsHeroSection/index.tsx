@@ -2,14 +2,20 @@ import './index.css'
 
 import Button from '../ui/button'
 
-type HeroProps = { backgroundImage: string; title: string; description: string }
+type HeroProps = {
+  backgroundImage: string | undefined
+  title: string | undefined
+  description: string | undefined
+}
 
 const HeroSection = ({ backgroundImage, title, description }: HeroProps) => {
   return (
     <div
       className="hero-section-container full-width"
       style={{
-        backgroundImage: `url(${backgroundImage})`
+        backgroundImage: `url(${
+          import.meta.env.VITE_IMAGE_BASE_URL
+        }w500${backgroundImage})`
       }}
     >
       <div className="movie-section flex column">
