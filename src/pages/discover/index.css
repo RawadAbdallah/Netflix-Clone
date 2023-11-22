@@ -31,6 +31,46 @@
   gap: 20px;
 }
 
+.discover-main-watch-more {
+  max-width: 740px;
+  margin: auto;
+  font-size: 1.5em;
+  padding: 1em;
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.discover-main-watch-more h2 {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.discover-main-watch-more p {
+  font-size: 24px;
+}
+
+.discover-main-watch-more button {
+  font-size: 20px;
+  padding: 14px 40px;
+}
+
+@media (min-width: 1px) and (max-width: 480px) {
+  .discover-main-watch-more button {
+    width: 100%;
+  }
+}
+
+@media (min-width: 1px) and (max-width: 767px) {
+  .discover-main-watch-more h2 {
+    font-size: 27px;
+  }
+}
+
 @media (min-width: 1025px) {
   .discover-main-hero h1 {
     font-size: 3rem;
