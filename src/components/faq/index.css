@@ -1,0 +1,11 @@
+.faq-title {
+  color: white;
+  font-size: 2.8rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .faq-title {
+    font-size: 1.8rem;
+  }
+}
