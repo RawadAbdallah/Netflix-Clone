@@ -24,7 +24,7 @@ type SliderProps = {
  * @returns a responsive slider, built specifically for Movie component
  */
 
-export default function Slider({ className = '', title, genre }: SliderProps) {
+export default function Slider({ className, title, genre }: SliderProps) {
   // const TOTAL_SLIDE_ITEMS = children.length
   const [movies, setMovies] = useState<MovieProps[] | null>(null)
   const [slider, setSlider] = useState({
