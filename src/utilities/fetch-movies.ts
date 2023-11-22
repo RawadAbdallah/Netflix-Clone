@@ -82,13 +82,22 @@ export default class fetchTMDB {
       const response = await fetch(url, this.fetchOptions)
       const json = await response.json()
 
-      dataReturned = json.results
-
-      if (dataReturned === undefined) {
-        dataReturned = null
-        errorReturned = 'error occured during fetch'
+      if (!json.results === undefined) {
+        dataReturned = json.results
+        if (dataReturned === undefined) {
+          dataReturned = null
+          errorReturned = 'error occured during fetch'
+        } else {
+          errorReturned = null
+        }
       } else {
-        errorReturned = null
+        dataReturned = json
+        if (dataReturned === undefined) {
+          dataReturned = null
+          errorReturned = 'error occured during fetch'
+        } else {
+          errorReturned = null
+        }
       }
     } catch (err) {
       dataReturned = null
