@@ -5,7 +5,7 @@
   background-color: var(--primary-black);
   color: white;
   padding: 50px var(--main-x-padding);
-  border-top: 8px solid var(--primary-grey);
+  border-top: 8px solid var(--secondary-grey);
 }
 
 .reverse {
