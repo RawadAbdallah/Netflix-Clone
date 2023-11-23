@@ -15,3 +15,13 @@ Netflix main pages front-end design clone using React.
 3. Run `npm i` to install all dependencies.
    
 4. Run `npm run dev` to start the local host in development.
+
+## Features:
+
+1. Movie slider.
+
+2. Movie detailed page.
+
+3. Routes
+
+4. SEO
