@@ -33,13 +33,19 @@ export default function Movie() {
 
   async function getData(id: number) {
     const { data: detailsRes } = await fetchTMDB.getMovieDetails(id)
-    setMovieData({ ...movieData, details: detailsRes })
+    setMovieData((prev) => {
+      return { ...prev, details: detailsRes }
+    })
 
     const { data: similiarMoviesRes } = await fetchTMDB.getSimilarMovies(id)
-    setMovieData({ ...movieData, similar: similiarMoviesRes })
+    setMovieData((prev) => {
+      return { ...prev, similar: similiarMoviesRes }
+    })
 
     const { data: comingSoonMovies } = await fetchTMDB.getUpcomingMovies()
-    setMovieData({ ...movieData, comingSoon: comingSoonMovies.results })
+    setMovieData((prev) => {
+      return { ...prev, comingSoon: comingSoonMovies.results }
+    })
   }
 
   useEffect(() => {
