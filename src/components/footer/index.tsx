@@ -2,7 +2,16 @@ import './index.css'
 
 import LanguageSelector from '../ui/language-selector'
 
-function Index() {
+type Props = {
+  className?: string
+}
+
+/**
+ * `Footer` component for the Netflix website.
+ * @param className, is a string used for adding css style classes
+ * @returns  Netflix footer.
+ */
+export default function Footer({ className = '' }: Props) {
   const linksList = [
     { text: 'FAQ', href: 'https://help.netflix.com/support/412' },
     { text: 'Investor Relations', href: 'http://ir.netflix.com/' },
@@ -28,7 +37,7 @@ function Index() {
   ]
 
   return (
-    <footer>
+    <footer className={className}>
       <a className="footer-link">Questions? Contact us.</a>
       <ul className="footer-links-list">
         {linksList.map((link, i) => (
@@ -46,5 +55,3 @@ function Index() {
     </footer>
   )
 }
-
-export default Index

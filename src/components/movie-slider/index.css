@@ -4,6 +4,9 @@
   height: 200px;
   width: 100%;
 }
+.slider-wrapper {
+  display: flex;
+}
 .slider-container {
   margin-top: 40px;
   padding: 0 3%;
@@ -45,11 +48,11 @@
 }
 .previous {
   top: 0;
-  left: 0;
+  left: -20px;
 }
 .next {
   top: 0;
-  right: 0;
+  right: -20px;
 }
 .handle-icon {
   display: flex;
@@ -58,8 +61,7 @@
   height: 100%;
 }
 .handle-icon img {
-  height: 15px;
-  margin-bottom: 17px;
+  height: 20px;
 }
 .handle-icon img:hover {
   cursor: pointer;
@@ -67,7 +69,7 @@
 
 @media only screen and (max-width: 600px) {
   .handle-icon img {
-    height: 15px;
+    height: 17px;
   }
   .slider {
     height: 115px;
