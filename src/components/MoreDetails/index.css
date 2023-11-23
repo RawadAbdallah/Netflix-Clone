@@ -1,0 +1,53 @@
+.secondary-text {
+  color: #a3a3a3;
+}
+.primary-text {
+  color: #ffffff;
+}
+.font-16px {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.flex {
+  display: flex;
+}
+.row {
+  flex-direction: row;
+}
+.column {
+  flex-direction: column;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.item-width {
+  width: 30%;
+}
+.margin-6px {
+  margin: 6px;
+}
+.full-width {
+  width: 100%;
+}
+.more-details-section {
+  background: #181818;
+  padding: 25px 5vw;
+  gap: 6px;
+}
+.title {
+  font-size: 30px;
+  font-weight: 400;
+}
+
+.more-details-cell {
+  gap: 5px;
+}
+
+.details-details {
+  width: 90%;
+}
+
+.cast-name {
+  margin: 1px 6px;
+}
