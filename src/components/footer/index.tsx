@@ -47,6 +47,13 @@ export default function Footer({ className = '' }: Props) {
             </a>
           </li>
         ))}
+        {linksList.map((link, i) => (
+          <li key={i}>
+            <a className={'footer-link'} href={link.href}>
+              {link.text}
+            </a>
+          </li>
+        ))}
       </ul>
 
       <LanguageSelector />

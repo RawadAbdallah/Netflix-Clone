@@ -1,0 +1,36 @@
+.coming-soon-container {
+  padding: 25px 5vw;
+}
+
+.section-head-text {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 34px;
+  margin: 6px;
+}
+.coming-soon-container-details {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.coming-soon-link {
+  margin: 6px;
+  max-width: 100%;
+  width: 30%;
+}
+.coming-soon-title {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.coming-soon-description {
+  color: #a3a3a3;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+}

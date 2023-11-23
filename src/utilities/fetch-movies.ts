@@ -76,25 +76,28 @@ export default class fetchTMDB {
    */
   private static async fetchRequest(url: string) {
     let dataReturned
-    let errorReturned: string | null
+    let errorReturned = null
 
     try {
       const response = await fetch(url, this.fetchOptions)
       const json = await response.json()
 
-      dataReturned = json.results
+      // Check if 'results' property is present in the JSON response
+      if ('results' in json) {
+        dataReturned = json.results
+      } else {
+        dataReturned = json
+      }
 
+      // If dataReturned is still undefined, set it to null
       if (dataReturned === undefined) {
         dataReturned = null
-        errorReturned = 'error occured during fetch'
-      } else {
-        errorReturned = null
+        errorReturned = 'Data is undefined'
       }
     } catch (err) {
       dataReturned = null
-      errorReturned = 'error occured during fetch'
-
-      console.log(err)
+      errorReturned = 'Error occurred during fetch'
+      console.error(err)
     }
 
     return { data: dataReturned, error: errorReturned }
@@ -121,6 +124,7 @@ export default class fetchTMDB {
   }
 
   /**
+   * `getMoviesByGenre` returns a list of movies that are related to a specific genre.
    * `getMoviesByGenre` returns a list of movies that are related to a specific genre.
    * It takes genre as a parameter.
    * @param genre
@@ -178,6 +182,7 @@ export default class fetchTMDB {
 
   /**
    * `getSimilarMovies` returns a list of movies that are genre related to a
+   * `getSimilarMovies` returns a list of movies that are genre related to a
    * specific movie.
    * It takes the movie id as a parameter.
    * @param movieID
@@ -207,6 +212,7 @@ export default class fetchTMDB {
 
   /**
    * `getUpcomingMovies` returns a list of movies that will be released soon.
+   * `getUpcomingMovies` returns a list of movies that will be released soon.
    *
    * @returns list of upcoming movies.
    *
@@ -219,9 +225,24 @@ export default class fetchTMDB {
   static async getUpcomingMovies() {
     const url = `${this.apiBaseUrl}/movie/upcoming?language=en-US&page=1`
 
-    const { data, error }: { data: MovieProps[] | null; error: string | null } =
-      await this.fetchRequest(url)
+    let dataReturned: MovieProps[] | null
+    let errorReturned: string | null
 
-    return { data, error }
+    try {
+      const response = await fetch(url, this.fetchOptions)
+      const json = await response.json()
+      dataReturned = json
+      if (dataReturned === undefined) {
+        dataReturned = null
+        errorReturned = 'error occured during fetch'
+      } else {
+        errorReturned = null
+      }
+    } catch (err) {
+      dataReturned = null
+      errorReturned = 'error occured during fetch'
+    }
+
+    return { data: dataReturned, error: errorReturned }
   }
 }

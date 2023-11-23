@@ -5,12 +5,18 @@ import './index.css'
 import Footer from '@/components/footer'
 import Slider from '@/components/movie-slider'
 import { TypeGenres } from '@/types/movie'
-import { fetchTMDB } from '@/utilities'
+import { fetchTMDB, SEO } from '@/utilities'
 import { Link } from 'react-router-dom'
 
 import Button from '@/components/ui/button'
 
 export default function Discover() {
+  SEO({
+    title: 'Watch The Dictator | Netflix',
+    description:
+      'Sacha Baron Cohen stars as a misogynistic tyrant who ends up on the streets of New York, powerless, unrecognizable and working in an organic food co-op. Watch trailers & learn more.'
+  })
+
   const { globalGenres } = fetchTMDB
 
   return (

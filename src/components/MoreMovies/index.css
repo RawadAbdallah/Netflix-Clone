@@ -1,0 +1,39 @@
+.flex {
+  display: flex;
+}
+.row {
+  flex-direction: row;
+}
+.column {
+  flex-direction: column;
+}
+.wrap {
+  flex-wrap: wrap;
+}
+.item-width {
+  width: 30%;
+}
+.more-movies-container {
+  padding: 25px 5vw;
+}
+.section-header-text {
+  /* color: #fff; */
+  font-size: 30px;
+  font-weight: 400;
+  line-height: 34px;
+  margin: 6px;
+}
+
+.title-link {
+  margin: 6px;
+  max-width: 100%;
+  width: 28vw;
+}
+.title-link-img {
+  width: 100%;
+}
+.link-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

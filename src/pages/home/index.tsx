@@ -4,6 +4,7 @@ import Faq from '@/components/faq'
 import Footer from '@/components/footer'
 import GettingStartedHero from '@/components/getting-started-hero'
 import Header from '@/components/header'
+import { SEO } from '@/utilities'
 import { Link } from 'react-router-dom'
 
 // ui-imports
@@ -12,6 +13,12 @@ import LanguageSelector from '@/components/ui/language-selector'
 import Section from '@/components/ui/section'
 
 export default function Home() {
+  SEO({
+    title: 'Netflix Lebanon - Watch TV Shows Online, Watch Movies Online',
+    description:
+      'Watch Netflix movies & TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more.'
+  })
+
   return (
     <div className="home">
       <Header>
