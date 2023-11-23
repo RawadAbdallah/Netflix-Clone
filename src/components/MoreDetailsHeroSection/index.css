@@ -24,7 +24,6 @@
   /* background-image: url('https://occ-0-3437-2705.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABZgTtJSyei_ggGY4YubgUvOAOYuhPzeJok_6u6qh37-V4i7xcQt4zI84WMh31vAZ39DYOoGhEg4Ss1EmC0W1sNO-wfTa_eGouECu.jpg?r=fc9'); */
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 0px 5vw;
   height: 110vh;
   width: 100%;
   margin-bottom: 10vh;
@@ -63,11 +62,12 @@
   height: 30vh;
 }
 .movie-details {
+  padding: 50px var(--main-x-padding);
   gap: 16px;
   width: 90%;
 }
 .movie-title {
-  font-size: 24px;
+  font-size: 4rem;
   margin: 10px 0;
   color: #ffffff;
 }

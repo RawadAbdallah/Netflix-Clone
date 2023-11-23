@@ -19,15 +19,11 @@ const HeroSection = ({ backgroundImage, title, description }: HeroProps) => {
       }}
     >
       <div className="movie-section flex column">
-        <div className="movie-logo-container">
-          <img
-            className="movie-logo"
-            src="https://occ-0-3437-2705.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABdTGc5oGPgVmBYiTHarN0q-AuiB5ZhgH2yGnBdj731l_8gyiku9ry7cYG-t3IcsIYObv8mefLJS1jB-EPAng_4lOop78gtXg38lO59aAkRNL.png?r=c7c"
-            alt="movie logo"
-          />
-        </div>
         <div className="movie-details flex column">
-          <h1 className="movie-title">{title}</h1>
+          <h1 className="movie-title">
+            {title?.split(' ')[0]} {title?.split(' ')[1]}
+          </h1>
+
           <div className="movie-info flex row">
             <span className="movie-info-item">1983</span>
             <span className="movie-info-spacer">|</span>
