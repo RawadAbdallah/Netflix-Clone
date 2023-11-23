@@ -11,7 +11,7 @@ const MoreDetails = () => {
           return (
             <div
               className="more-details-cell flex column item-width margin-6px"
-              key="index"
+              key={index}
             >
               <div className="details-title font-16px secondary-text">
                 {item.details_title}
@@ -26,9 +26,11 @@ const MoreDetails = () => {
           Cast
         </div>
         <div className="cast-names flex row wrap full-width">
-          {cast_names_array.map((name) => {
+          {cast_names_array.map((name, index) => {
             return (
-              <div className="cast-name item-width font-16px primary-text">{name}</div>
+              <div key={index} className="cast-name item-width font-16px primary-text">
+                {name}
+              </div>
             )
           })}
         </div>

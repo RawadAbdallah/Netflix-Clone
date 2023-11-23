@@ -1,6 +1,7 @@
 import './index.css'
 
 import { useEffect, useState } from 'react'
+import { MovieProps } from '@/types/movie'
 import { fetchTMDB } from '@/utilities'
 
 const mockData = {
@@ -128,69 +129,29 @@ const mockData = {
 }
 
 type props = {
-  movieId: number
+  movieList: MovieProps[]
 }
 
-function MoreMovies({ movieId }: props) {
-  const [movies, setMovies] = useState([])
-
-  async function getData() {
-    const { data, error } = await fetchTMDB.getSimilarMovies(movieId)
-    return data
-  }
-
-  useEffect(() => {
-    console.log(getData())
-  }, [])
-
+function MoreMovies({ movieList }: props) {
   return (
     <div className="more-movies-container flex column">
       <div className="section-header">
         <h2 className="section-header-text">More Like This</h2>
       </div>
       <div className="link-container">
-        <a href="" className="title-link">
-          <img
-            className="title-link-img"
-            src="https://occ-0-3437-2705.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABckMjOU5AhTDaTEnhozhpVUnJ2ji0aBhTINCphY3PPsYHQj6fXrm6_ZTUntxr9rNHeRidYEpBEi_t1R-MDwdwiK8GOws3LqUlcIo.jpg?r=7f9"
-            alt=""
-          />
-        </a>
-        <a href="" className="title-link">
-          <img
-            className="title-link-img"
-            src="https://occ-0-3437-2705.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABckMjOU5AhTDaTEnhozhpVUnJ2ji0aBhTINCphY3PPsYHQj6fXrm6_ZTUntxr9rNHeRidYEpBEi_t1R-MDwdwiK8GOws3LqUlcIo.jpg?r=7f9"
-            alt=""
-          />
-        </a>
-        <a href="" className="title-link">
-          <img
-            className="title-link-img"
-            src="https://occ-0-3437-2705.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABckMjOU5AhTDaTEnhozhpVUnJ2ji0aBhTINCphY3PPsYHQj6fXrm6_ZTUntxr9rNHeRidYEpBEi_t1R-MDwdwiK8GOws3LqUlcIo.jpg?r=7f9"
-            alt=""
-          />
-        </a>
-        <a href="" className="title-link">
-          <img
-            className="title-link-img"
-            src="https://occ-0-3437-2705.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABckMjOU5AhTDaTEnhozhpVUnJ2ji0aBhTINCphY3PPsYHQj6fXrm6_ZTUntxr9rNHeRidYEpBEi_t1R-MDwdwiK8GOws3LqUlcIo.jpg?r=7f9"
-            alt=""
-          />
-        </a>
-        <a href="" className="title-link">
-          <img
-            className="title-link-img"
-            src="https://occ-0-3437-2705.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABckMjOU5AhTDaTEnhozhpVUnJ2ji0aBhTINCphY3PPsYHQj6fXrm6_ZTUntxr9rNHeRidYEpBEi_t1R-MDwdwiK8GOws3LqUlcIo.jpg?r=7f9"
-            alt=""
-          />
-        </a>
-        <a href="" className="title-link">
-          <img
-            className="title-link-img"
-            src="https://occ-0-3437-2705.1.nflxso.net/dnm/api/v6/6gmvu2hxdfnQ55LZZjyzYR4kzGk/AAAABckMjOU5AhTDaTEnhozhpVUnJ2ji0aBhTINCphY3PPsYHQj6fXrm6_ZTUntxr9rNHeRidYEpBEi_t1R-MDwdwiK8GOws3LqUlcIo.jpg?r=7f9"
-            alt=""
-          />
-        </a>
+        {movieList?.map((movie, index) => {
+          if (index < 6) {
+            return (
+              <a href={`/movie/${movie.id}`} className="title-link" key={index}>
+                <img
+                  className="title-link-img"
+                  src={`${import.meta.env.VITE_IMAGE_BASE_URL}w500${movie.backdrop_path}`}
+                  alt="movie"
+                />
+              </a>
+            )
+          }
+        })}
       </div>
     </div>
   )

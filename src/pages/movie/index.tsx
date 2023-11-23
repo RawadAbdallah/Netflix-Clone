@@ -76,7 +76,7 @@ export default function Movie() {
       />
       <Hook tagLine={movieData.details?.tagline} />
       <MoreDetails />
-      <MoreMovies movieId={movieId} />
+      <MoreMovies movieList={movieData.similar} />
       <ComingSoon comingSoon={movieData.comingSoon} />
       <Footer className={''} />
     </div>
